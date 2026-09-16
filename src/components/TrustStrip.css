@@ -1,0 +1,646 @@
+/* =========================================================
+   TRUST STRIP
+   MASTER CHEMICAL SOLUTION
+========================================================= */
+
+.trust-strip {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border-bottom:
+    1px solid #dfe5ee;
+
+  color: #07111f;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.trust-container {
+  width: min(
+    1380px,
+    calc(100% - 96px)
+  );
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.trust-top {
+  position: relative;
+
+  border-bottom:
+    1px solid #e2e6ec;
+
+  background:
+    #f7f9fc;
+}
+
+.trust-top .trust-container {
+  min-height: 82px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr auto auto;
+
+  align-items: center;
+
+  gap: 50px;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.trust-label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.trust-status {
+  width: 28px;
+  height: 28px;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    1px solid #d8dee8;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+}
+
+.trust-status i {
+  width: 7px;
+  height: 7px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  background: #e61b1b;
+
+  box-shadow:
+    0 0 0 5px
+    rgba(230, 27, 27, 0.1);
+
+  animation:
+    trustPulse 2s ease-in-out infinite;
+}
+
+@keyframes trustPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.trust-label > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.trust-label small {
+  color: #8792a3;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+}
+
+.trust-label strong {
+  color: #07111f;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   TOP CENTER
+========================================================= */
+
+.trust-top-text {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  color: #7d8796;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+}
+
+.trust-top-text b {
+  color: #e61b1b;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   COUNTER
+========================================================= */
+
+.trust-counter {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 8px;
+
+  padding-left: 30px;
+
+  border-left:
+    1px solid #dce2ea;
+}
+
+.trust-counter strong {
+  color: #00349a;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 27px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.05em;
+}
+
+.trust-counter span {
+  color: #8b95a5;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+}
+
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.trust-marquee {
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #ffffff;
+}
+
+.trust-track {
+  width: max-content;
+
+  display: flex;
+
+  align-items: stretch;
+
+  animation:
+    trustMarquee
+    32s linear infinite;
+
+  will-change: transform;
+}
+
+@keyframes trustMarquee {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* =========================================================
+   SERVICE ITEM
+========================================================= */
+
+.trust-service {
+  position: relative;
+
+  min-width: 310px;
+
+  min-height: 112px;
+
+  padding:
+    25px 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    35px 1fr 28px;
+
+  align-items: center;
+
+  gap: 15px;
+
+  border-right:
+    1px solid #e3e7ed;
+
+  background: #ffffff;
+
+  transition:
+    background 0.3s ease;
+}
+
+.trust-service:hover {
+  background: #f7f9fc;
+}
+
+
+/* =========================================================
+   SERVICE NUMBER
+========================================================= */
+
+.trust-service-number {
+  align-self: start;
+
+  color: #00349a;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   SERVICE CONTENT
+========================================================= */
+
+.trust-service-content {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.trust-service-content strong {
+  color: #07111f;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.02em;
+
+  white-space: nowrap;
+}
+
+.trust-service-content span {
+  color: #8993a2;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.trust-service-arrow {
+  width: 28px;
+  height: 28px;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    1px solid #dce2ea;
+
+  border-radius: 50%;
+
+  color: #00349a;
+
+  font-size: 12px;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.trust-service:hover
+.trust-service-arrow {
+  color: #ffffff;
+
+  background: #e61b1b;
+
+  border-color: #e61b1b;
+
+  transform:
+    translate(2px, -2px);
+}
+
+
+/* =========================================================
+   RED ACCENT LINE
+========================================================= */
+
+.trust-service-line {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 0;
+
+  height: 2px;
+
+  background: #e61b1b;
+
+  transition:
+    width 0.35s ease;
+}
+
+.trust-service:hover
+.trust-service-line {
+  width: 100%;
+}
+
+
+/* =========================================================
+   BOTTOM BAR
+========================================================= */
+
+.trust-bottom {
+  min-height: 48px;
+
+  background: #00349a;
+
+  color: #ffffff;
+}
+
+.trust-bottom .trust-container {
+  min-height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+/* =========================================================
+   BOTTOM LEFT
+========================================================= */
+
+.trust-bottom-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.trust-red-line {
+  width: 20px;
+  height: 2px;
+
+  background: #e61b1b;
+}
+
+.trust-bottom-left span:last-child {
+  color:
+    rgba(255, 255, 255, 0.6);
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+}
+
+
+/* =========================================================
+   BOTTOM BADGES
+========================================================= */
+
+.trust-bottom-right {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+.trust-bottom-right span {
+  padding:
+    5px 8px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.18);
+
+  color:
+    rgba(255, 255, 255, 0.55);
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 6px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .trust-container {
+    width:
+      calc(100% - 48px);
+  }
+
+  .trust-top .trust-container {
+    grid-template-columns:
+      1fr auto;
+
+    gap: 25px;
+  }
+
+  .trust-top-text {
+    display: none;
+  }
+
+  .trust-service {
+    min-width: 280px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .trust-container {
+    width:
+      calc(100% - 40px);
+  }
+
+  .trust-top .trust-container {
+    min-height: 70px;
+
+    grid-template-columns:
+      1fr auto;
+
+    gap: 15px;
+  }
+
+  .trust-status {
+    width: 25px;
+    height: 25px;
+  }
+
+  .trust-label {
+    gap: 10px;
+  }
+
+  .trust-label small {
+    font-size: 6px;
+  }
+
+  .trust-label strong {
+    font-size: 9px;
+  }
+
+  .trust-counter {
+    padding-left: 15px;
+  }
+
+  .trust-counter strong {
+    font-size: 21px;
+  }
+
+  .trust-counter span {
+    font-size: 6px;
+  }
+
+  .trust-service {
+    min-width: 255px;
+
+    min-height: 95px;
+
+    padding:
+      20px 22px;
+
+    grid-template-columns:
+      28px 1fr 26px;
+
+    gap: 10px;
+  }
+
+  .trust-service-content strong {
+    font-size: 12px;
+  }
+
+  .trust-service-content span {
+    font-size: 9px;
+  }
+
+  .trust-service-arrow {
+    width: 26px;
+    height: 26px;
+  }
+
+  .trust-bottom {
+    min-height: 42px;
+  }
+
+  .trust-bottom .trust-container {
+    min-height: 42px;
+  }
+
+  .trust-bottom-left span:last-child {
+    font-size: 6px;
+  }
+
+  .trust-bottom-right {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .trust-track,
+  .trust-status i {
+    animation: none;
+  }
+
+}
