@@ -1,5 +1,9 @@
 import { useState } from "react";
 import "./Solutions.css";
+import s1 from "../assets/s1.png";
+import s2 from "../assets/s2.png";
+import s3 from "../assets/s3.png";
+import s4 from "../assets/s4.png";
 
 const solutions = [
   {
@@ -10,7 +14,7 @@ const solutions = [
     description:
       "Seamless waterproofing systems designed to protect critical structures from water ingress, moisture penetration and exposure-related damage.",
     image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=85",
+    s1,
     applications: [
       "Terrace",
       "Podium",
@@ -32,7 +36,7 @@ const solutions = [
     description:
       "Durable resin flooring systems engineered for industrial, commercial, institutional and high-traffic environments.",
     image:
-      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=2000&q=85",
+    s2,
     applications: [
       "Factories",
       "Warehouses",
@@ -54,7 +58,7 @@ const solutions = [
     description:
       "Polyurethane flooring systems designed for environments requiring flexibility, durability, impact resistance and long-term performance.",
     image:
-      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=2000&q=85",
+   s3,
     applications: [
       "Industrial",
       "Heavy Duty",
@@ -76,7 +80,7 @@ const solutions = [
     description:
       "Specialised repair, injection and strengthening systems for damaged, aging and structurally demanding concrete surfaces.",
     image:
-      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2000&q=85",
+      s4,
     applications: [
       "PU Injection",
       "Epoxy Injection",

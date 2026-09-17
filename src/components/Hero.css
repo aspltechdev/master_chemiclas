@@ -1,6 +1,6 @@
 /* =========================================================
    MASTER CHEMICAL SOLUTION
-   PREMIUM HERO — LIGHT OVERLAY / VISIBLE IMAGERY
+   PREMIUM HERO — CONSISTENT TYPOGRAPHY
 ========================================================= */
 
 .hero {
@@ -25,7 +25,6 @@
 .hero-background {
   position: absolute;
   inset: 0;
-
   z-index: 0;
 }
 
@@ -44,7 +43,6 @@
 
 .hero-background-slide.active {
   opacity: 1;
-
   transform: scale(1);
 }
 
@@ -56,42 +54,36 @@
 
   object-fit: cover;
 
-  /* subtle enhancement so the photo pops */
   filter: saturate(1.08) contrast(1.05);
 }
 
 /* =========================================================
-   DARK OVERLAY — LIGHTER, IMAGE-FRIENDLY
-   Left side keeps text readable, right side reveals the image.
+   DARK OVERLAY — IMAGE FRIENDLY
 ========================================================= */
 
 .hero-dark-overlay {
   position: absolute;
   inset: 0;
-
   z-index: 1;
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0, 15, 48, 0.86) 0%,
-      rgba(0, 20, 62, 0.72) 30%,
-      rgba(0, 24, 75, 0.35) 58%,
-      rgba(0, 18, 58, 0.18) 78%,
-      rgba(0, 12, 39, 0.42) 100%
-    );
+  background: linear-gradient(
+    90deg,
+    rgba(0, 15, 48, 0.88) 0%,
+    rgba(0, 20, 62, 0.74) 32%,
+    rgba(0, 24, 75, 0.38) 60%,
+    rgba(0, 18, 58, 0.22) 80%,
+    rgba(0, 12, 39, 0.48) 100%
+  );
 }
 
 /* =========================================================
-   BLUE BRAND GLOW — SOFTER
+   BLUE + RED BRAND GLOW
 ========================================================= */
 
 .hero-blue-overlay {
   position: absolute;
   inset: 0;
-
   z-index: 2;
-
   pointer-events: none;
 
   background:
@@ -108,18 +100,14 @@
 }
 
 /* =========================================================
-   ARCHITECTURAL GRID — slightly brighter so it reads
-   against a lighter overlay
+   ARCHITECTURAL GRID
 ========================================================= */
 
 .hero-grid-overlay {
   position: absolute;
   inset: 0;
-
   z-index: 3;
-
   pointer-events: none;
-
   opacity: 0.08;
 
   background-image:
@@ -148,15 +136,12 @@
 
 .hero-topbar {
   position: absolute;
-
   top: 105px;
   left: 0;
   right: 0;
-
   z-index: 10;
 
   width: min(1380px, calc(100% - 96px));
-
   margin: 0 auto;
 
   display: flex;
@@ -171,16 +156,13 @@
 .hero-top-left {
   display: flex;
   align-items: center;
-
   gap: 10px;
 
   color: rgba(255, 255, 255, 0.78);
 
   font-family: "Manrope", sans-serif;
-
   font-size: 9px;
   font-weight: 800;
-
   letter-spacing: 0.16em;
 
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
@@ -189,7 +171,6 @@
 .hero-status-dot {
   width: 7px;
   height: 7px;
-
   flex-shrink: 0;
 
   border-radius: 50%;
@@ -200,13 +181,11 @@
 }
 
 .hero-top-right {
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.45);
 
   font-family: "Manrope", sans-serif;
-
   font-size: 8px;
   font-weight: 700;
-
   letter-spacing: 0.18em;
 
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
@@ -218,11 +197,9 @@
 
 .hero-container {
   position: relative;
-
   z-index: 8;
 
   width: min(1380px, calc(100% - 96px));
-
   height: 100%;
 
   margin: 0 auto;
@@ -243,9 +220,14 @@
 ========================================================= */
 
 .hero-content {
-  max-width: 780px;
+  max-width: 720px;
 
   padding-top: 45px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0;
 
   animation: heroContentReveal 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
@@ -262,24 +244,21 @@
 }
 
 /* =========================================================
-   CATEGORY
+   CATEGORY (eyebrow)
 ========================================================= */
 
 .hero-category {
   display: flex;
   align-items: center;
-
   gap: 12px;
 
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 
   color: rgba(255, 255, 255, 0.78);
 
   font-family: "Manrope", sans-serif;
-
   font-size: 9px;
   font-weight: 800;
-
   letter-spacing: 0.18em;
 
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
@@ -295,42 +274,55 @@
 }
 
 /* =========================================================
-   HEADING
+   HEADING — CONSISTENT SOLID FONT (no outline)
 ========================================================= */
 
-.hero-heading h1 {
+.hero-heading {
   margin: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
 
   font-family: "Manrope", sans-serif;
 
   font-size: clamp(58px, 7vw, 102px);
-
   font-weight: 800;
 
   letter-spacing: -0.075em;
 
-  line-height: 0.91;
+  line-height: 0.95;
+
+  color: #ffffff;
 
   text-shadow: 0 4px 30px rgba(0, 0, 0, 0.55);
 }
 
-.hero-heading h1 span {
-  color: transparent;
+.hero-heading-line {
+  display: block;
 
-  -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.85);
-
-  position: relative;
+  color: #ffffff;
 }
 
-.hero-heading h1 span::after {
+/* Accent line — same font, same weight, just a subtle color shift */
+.hero-heading-line--accent {
+  color: #ffffff;
+
+  position: relative;
+
+  padding-bottom: 10px;
+}
+
+.hero-heading-line--accent::after {
   content: "";
 
   position: absolute;
 
   left: 0;
-  bottom: -7px;
+  bottom: 0;
 
-  width: 45%;
+  width: 60px;
   height: 4px;
 
   background: #e61b1b;
@@ -339,21 +331,21 @@
 }
 
 /* =========================================================
-   DESCRIPTION
+   DESCRIPTION — consistent, no clash
 ========================================================= */
 
 .hero-description {
-  max-width: 570px;
+  max-width: 540px;
 
-  margin: 32px 0 0;
+  margin: 26px 0 0;
 
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.82);
 
   font-family: "DM Sans", sans-serif;
-
   font-size: 15px;
+  font-weight: 400;
 
-  line-height: 1.75;
+  line-height: 1.7;
 
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
 }
@@ -365,7 +357,6 @@
 .hero-actions {
   display: flex;
   align-items: center;
-
   gap: 10px;
 
   margin-top: 34px;
@@ -374,21 +365,18 @@
 .hero-primary-btn,
 .hero-secondary-btn {
   min-height: 56px;
-
-  padding: 0 20px;
+  padding: 0 22px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  gap: 24px;
+  gap: 22px;
 
   font-family: "Manrope", sans-serif;
-
   font-size: 10px;
   font-weight: 800;
-
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 
   text-decoration: none;
 
@@ -401,9 +389,7 @@
 
 .hero-primary-btn {
   color: #ffffff;
-
   background: #e61b1b;
-
   border: 1px solid #e61b1b;
 
   box-shadow: 0 12px 30px -10px rgba(230, 27, 27, 0.7);
@@ -411,18 +397,14 @@
 
 .hero-primary-btn:hover {
   background: #c90000;
-
   border-color: #c90000;
-
   transform: translateY(-3px);
-
   box-shadow: 0 18px 36px -10px rgba(230, 27, 27, 0.85);
 }
 
 .hero-primary-btn b,
 .hero-secondary-btn b {
   font-size: 17px;
-
   font-weight: 400;
 
   transition: transform 0.3s ease;
@@ -437,7 +419,6 @@
   color: #ffffff;
 
   background: rgba(255, 255, 255, 0.10);
-
   border: 1px solid rgba(255, 255, 255, 0.32);
 
   backdrop-filter: blur(14px);
@@ -446,9 +427,7 @@
 
 .hero-secondary-btn:hover {
   background: rgba(255, 255, 255, 0.18);
-
   border-color: rgba(255, 255, 255, 0.55);
-
   transform: translateY(-3px);
 }
 
@@ -459,10 +438,9 @@
 .hero-proof {
   display: flex;
   align-items: center;
-
   gap: 12px;
 
-  margin-top: 30px;
+  margin-top: 28px;
 }
 
 .hero-proof-icon {
@@ -475,11 +453,9 @@
   flex-shrink: 0;
 
   border: 1px solid rgba(255, 255, 255, 0.35);
-
   border-radius: 50%;
 
   color: #ffffff;
-
   font-size: 12px;
 
   background: rgba(255, 255, 255, 0.06);
@@ -491,7 +467,6 @@
 .hero-proof-content {
   display: flex;
   flex-direction: column;
-
   gap: 4px;
 }
 
@@ -499,10 +474,8 @@
   color: rgba(255, 255, 255, 0.92);
 
   font-family: "Manrope", sans-serif;
-
   font-size: 9px;
   font-weight: 800;
-
   letter-spacing: 0.1em;
 
   text-transform: uppercase;
@@ -514,14 +487,13 @@
   color: rgba(255, 255, 255, 0.6);
 
   font-family: "DM Sans", sans-serif;
-
   font-size: 10px;
 
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
 }
 
 /* =========================================================
-   RIGHT PANEL
+   RIGHT TECHNICAL PANEL
 ========================================================= */
 
 .hero-panel {
@@ -534,12 +506,11 @@
 
   padding: 30px;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.16),
-      rgba(255, 255, 255, 0.05)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.05)
+  );
 
   border: 1px solid rgba(255, 255, 255, 0.24);
 
@@ -570,7 +541,6 @@
   content: "";
 
   position: absolute;
-
   top: -100px;
   right: -100px;
 
@@ -590,7 +560,6 @@
   content: "";
 
   position: absolute;
-
   bottom: -80px;
   left: -80px;
 
@@ -606,10 +575,7 @@
   pointer-events: none;
 }
 
-/* =========================================================
-   PANEL HEADER
-========================================================= */
-
+/* panel header */
 .hero-panel-header {
   position: relative;
 
@@ -625,7 +591,6 @@
 .hero-panel-header > div:first-child {
   display: flex;
   flex-direction: column;
-
   gap: 5px;
 }
 
@@ -633,10 +598,8 @@
   color: rgba(255, 255, 255, 0.48);
 
   font-family: "Manrope", sans-serif;
-
   font-size: 8px;
   font-weight: 800;
-
   letter-spacing: 0.15em;
 }
 
@@ -644,7 +607,6 @@
   color: #ffffff;
 
   font-family: "Manrope", sans-serif;
-
   font-size: 20px;
 
   letter-spacing: -0.03em;
@@ -658,7 +620,6 @@
   place-items: center;
 
   border: 1px solid rgba(255, 255, 255, 0.24);
-
   border-radius: 50%;
 
   font-size: 14px;
@@ -666,13 +627,9 @@
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* =========================================================
-   PANEL MAIN
-========================================================= */
-
+/* panel main */
 .hero-panel-main {
   position: relative;
-
   padding-top: 30px;
 }
 
@@ -680,10 +637,8 @@
   color: rgba(255, 255, 255, 0.5);
 
   font-family: "Manrope", sans-serif;
-
   font-size: 8px;
   font-weight: 800;
-
   letter-spacing: 0.16em;
 }
 
@@ -695,7 +650,6 @@
   color: #ffffff;
 
   font-family: "Manrope", sans-serif;
-
   font-size: 28px;
   font-weight: 800;
 
@@ -711,10 +665,7 @@
   background: rgba(255, 255, 255, 0.16);
 }
 
-/* =========================================================
-   PANEL LIST
-========================================================= */
-
+/* panel list */
 .hero-panel-list {
   margin-top: 4px;
 }
@@ -723,7 +674,6 @@
   min-height: 52px;
 
   display: grid;
-
   grid-template-columns: 35px 1fr 20px;
 
   align-items: center;
@@ -739,7 +689,6 @@
 
 .hero-panel-item:hover {
   padding-left: 7px;
-
   background: rgba(255, 255, 255, 0.06);
 }
 
@@ -747,7 +696,6 @@
   color: #e61b1b;
 
   font-family: "Manrope", sans-serif;
-
   font-size: 8px;
   font-weight: 800;
 }
@@ -756,24 +704,17 @@
   color: rgba(255, 255, 255, 0.85);
 
   font-family: "DM Sans", sans-serif;
-
   font-size: 11px;
-
   font-weight: 500;
 }
 
 .hero-panel-item b {
   color: rgba(255, 255, 255, 0.4);
-
   font-size: 12px;
-
   font-weight: 400;
 }
 
-/* =========================================================
-   PANEL FOOTER
-========================================================= */
-
+/* panel footer */
 .hero-panel-footer {
   position: relative;
 
@@ -788,16 +729,13 @@
   color: rgba(255, 255, 255, 0.4);
 
   font-family: "Manrope", sans-serif;
-
   font-size: 8px;
   font-weight: 800;
-
   letter-spacing: 0.15em;
 }
 
 .hero-panel-badges {
   display: flex;
-
   gap: 6px;
 }
 
@@ -809,12 +747,9 @@
   color: rgba(255, 255, 255, 0.55);
 
   font-family: "Manrope", sans-serif;
-
   font-size: 7px;
   font-weight: 800;
-
   font-style: normal;
-
   letter-spacing: 0.1em;
 
   background: rgba(255, 255, 255, 0.04);
@@ -826,7 +761,6 @@
 
 .hero-navigation {
   position: absolute;
-
   left: 0;
   right: 0;
   bottom: 48px;
@@ -834,7 +768,6 @@
   z-index: 12;
 
   width: min(1380px, calc(100% - 96px));
-
   margin: 0 auto;
 
   display: flex;
@@ -842,15 +775,9 @@
   justify-content: space-between;
 }
 
-/* =========================================================
-   SLIDE BUTTONS
-========================================================= */
-
 .hero-slide-navigation {
   display: flex;
-
   align-items: center;
-
   gap: 8px;
 }
 
@@ -861,9 +788,7 @@
   height: 35px;
 
   padding: 0;
-
   border: 0;
-
   background: transparent;
 
   cursor: pointer;
@@ -880,7 +805,6 @@
   color: rgba(255, 255, 255, 0.45);
 
   font-family: "Manrope", sans-serif;
-
   font-size: 9px;
   font-weight: 800;
 
@@ -913,19 +837,12 @@
 
 .hero-slide-button.active i {
   height: 2px;
-
   background: #e61b1b;
-
   box-shadow: 0 0 10px rgba(230, 27, 27, 0.7);
 }
 
-/* =========================================================
-   ARROW NAVIGATION
-========================================================= */
-
 .hero-arrow-navigation {
   display: flex;
-
   gap: 6px;
 }
 
@@ -944,7 +861,6 @@
   -webkit-backdrop-filter: blur(10px);
 
   color: #ffffff;
-
   font-size: 17px;
 
   cursor: pointer;
@@ -957,9 +873,7 @@
 
 .hero-arrow-navigation button:hover {
   background: #e61b1b;
-
   border-color: #e61b1b;
-
   transform: translateY(-2px);
 }
 
@@ -969,7 +883,6 @@
 
 .hero-progress {
   position: absolute;
-
   left: 0;
   right: 0;
   bottom: 0;
@@ -994,12 +907,8 @@
 }
 
 @keyframes heroProgressAnimation {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 /* =========================================================
@@ -1008,7 +917,6 @@
 
 .hero-scroll-indicator {
   position: absolute;
-
   right: 35px;
   bottom: 48px;
 
@@ -1016,7 +924,6 @@
 
   display: flex;
   flex-direction: column;
-
   align-items: center;
 
   gap: 10px;
@@ -1026,10 +933,8 @@
   color: rgba(255, 255, 255, 0.45);
 
   font-family: "Manrope", sans-serif;
-
   font-size: 7px;
   font-weight: 800;
-
   letter-spacing: 0.18em;
 
   writing-mode: vertical-rl;
@@ -1058,12 +963,8 @@
 }
 
 @keyframes heroScrollAnimation {
-  0% {
-    transform: translateY(-120%);
-  }
-  100% {
-    transform: translateY(300%);
-  }
+  0% { transform: translateY(-120%); }
+  100% { transform: translateY(300%); }
 }
 
 /* =========================================================
@@ -1083,17 +984,13 @@
   color: rgba(255, 255, 255, 0.05);
 
   font-family: "Manrope", sans-serif;
-
   font-size: clamp(250px, 35vw, 520px);
-
   font-weight: 800;
-
   letter-spacing: -0.1em;
 
   line-height: 1;
 
   pointer-events: none;
-
   user-select: none;
 
   text-shadow: 0 0 80px rgba(0, 84, 210, 0.25);
@@ -1109,17 +1006,13 @@
     gap: 45px;
   }
 
-  .hero-heading h1 {
+  .hero-heading {
     font-size: clamp(52px, 6.5vw, 78px);
   }
 
-  .hero-panel {
-    padding: 24px;
-  }
+  .hero-panel { padding: 24px; }
 
-  .hero-background-number {
-    display: none;
-  }
+  .hero-background-number { display: none; }
 }
 
 /* =========================================================
@@ -1127,18 +1020,14 @@
 ========================================================= */
 
 @media (max-width: 900px) {
-  .hero {
-    min-height: 750px;
-  }
+  .hero { min-height: 750px; }
 
   .hero-topbar {
     top: 92px;
     width: calc(100% - 48px);
   }
 
-  .hero-top-right {
-    display: none;
-  }
+  .hero-top-right { display: none; }
 
   .hero-container {
     width: calc(100% - 48px);
@@ -1146,30 +1035,21 @@
     padding-top: 60px;
   }
 
-  .hero-panel {
-    display: none;
-  }
+  .hero-panel { display: none; }
 
-  .hero-content {
-    max-width: 700px;
-  }
+  .hero-content { max-width: 640px; }
 
-  .hero-navigation {
-    width: calc(100% - 48px);
-  }
+  .hero-navigation { width: calc(100% - 48px); }
 
-  .hero-scroll-indicator {
-    display: none;
-  }
+  .hero-scroll-indicator { display: none; }
 
-  /* Slightly stronger overlay on tablet since image is wider */
   .hero-dark-overlay {
     background: linear-gradient(
       90deg,
       rgba(0, 15, 48, 0.88) 0%,
-      rgba(0, 20, 62, 0.74) 40%,
-      rgba(0, 24, 75, 0.45) 75%,
-      rgba(0, 12, 39, 0.55) 100%
+      rgba(0, 20, 62, 0.76) 40%,
+      rgba(0, 24, 75, 0.48) 75%,
+      rgba(0, 12, 39, 0.58) 100%
     );
   }
 }
@@ -1187,9 +1067,9 @@
   .hero-dark-overlay {
     background: linear-gradient(
       180deg,
-      rgba(0, 18, 58, 0.82) 0%,
-      rgba(0, 29, 92, 0.72) 42%,
-      rgba(0, 10, 32, 0.92) 100%
+      rgba(0, 18, 58, 0.84) 0%,
+      rgba(0, 29, 92, 0.74) 42%,
+      rgba(0, 10, 32, 0.94) 100%
     );
   }
 
@@ -1209,38 +1089,35 @@
     padding-top: 70px;
   }
 
-  .hero-content {
-    padding-top: 30px;
-  }
+  .hero-content { padding-top: 30px; }
 
   .hero-category {
-    margin-bottom: 19px;
+    margin-bottom: 18px;
     font-size: 7px;
     letter-spacing: 0.12em;
   }
 
-  .hero-category-line {
-    width: 22px;
+  .hero-category-line { width: 22px; }
+
+  .hero-heading {
+    font-size: clamp(42px, 12.5vw, 60px);
+    letter-spacing: -0.07em;
+    line-height: 0.96;
+    gap: 2px;
   }
 
-  .hero-heading h1 {
-    font-size: clamp(43px, 12.5vw, 62px);
-    letter-spacing: -0.075em;
-    line-height: 0.94;
+  .hero-heading-line--accent {
+    padding-bottom: 8px;
   }
 
-  .hero-heading h1 span {
-    -webkit-text-stroke: 0.8px rgba(255, 255, 255, 0.85);
-  }
-
-  .hero-heading h1 span::after {
+  .hero-heading-line--accent::after {
     height: 3px;
-    bottom: -5px;
+    width: 48px;
   }
 
   .hero-description {
-    max-width: 390px;
-    margin-top: 23px;
+    max-width: 380px;
+    margin-top: 22px;
     font-size: 12px;
     line-height: 1.65;
   }
@@ -1259,42 +1136,23 @@
     min-height: 50px;
   }
 
-  .hero-proof {
-    margin-top: 24px;
-  }
+  .hero-proof { margin-top: 22px; }
 
-  .hero-proof-content strong {
-    font-size: 8px;
-  }
-
-  .hero-proof-content span {
-    font-size: 8px;
-  }
+  .hero-proof-content strong,
+  .hero-proof-content span { font-size: 8px; }
 
   .hero-navigation {
     width: calc(100% - 40px);
     bottom: 27px;
   }
 
-  .hero-slide-navigation {
-    gap: 2px;
-  }
+  .hero-slide-navigation { gap: 2px; }
 
-  .hero-slide-button {
-    width: 42px;
-  }
+  .hero-slide-button { width: 42px; }
+  .hero-slide-button span { font-size: 8px; }
+  .hero-slide-button i { left: 21px; }
 
-  .hero-slide-button span {
-    font-size: 8px;
-  }
-
-  .hero-slide-button i {
-    left: 21px;
-  }
-
-  .hero-arrow-navigation {
-    gap: 4px;
-  }
+  .hero-arrow-navigation { gap: 4px; }
 
   .hero-arrow-navigation button {
     width: 35px;
@@ -1308,21 +1166,13 @@
 ========================================================= */
 
 @media (max-width: 420px) {
-  .hero {
-    min-height: 690px;
-  }
+  .hero { min-height: 690px; }
 
-  .hero-heading h1 {
-    font-size: 41px;
-  }
+  .hero-heading { font-size: 40px; }
 
-  .hero-description {
-    font-size: 11.5px;
-  }
+  .hero-description { font-size: 11.5px; }
 
-  .hero-proof {
-    gap: 8px;
-  }
+  .hero-proof { gap: 8px; }
 
   .hero-proof-icon {
     width: 27px;
@@ -1330,17 +1180,10 @@
     font-size: 10px;
   }
 
-  .hero-navigation {
-    bottom: 24px;
-  }
+  .hero-navigation { bottom: 24px; }
 
-  .hero-slide-button {
-    width: 36px;
-  }
-
-  .hero-slide-button i {
-    left: 19px;
-  }
+  .hero-slide-button { width: 36px; }
+  .hero-slide-button i { left: 19px; }
 }
 
 /* =========================================================

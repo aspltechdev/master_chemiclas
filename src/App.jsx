@@ -8,6 +8,8 @@ import Projects from "./components/Projects";
 import WhyUs from "./components/WhyUs";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
+import Contact from "./components/Contact";
+import About from "./components/About";
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <About/>
         <TrustStrip />
         <Services />
         <Solutions />
@@ -22,6 +25,7 @@ function App() {
         <Projects />
         <WhyUs />
         <CTA />
+        <Contact/>
       </main>
       <Footer />
     </>

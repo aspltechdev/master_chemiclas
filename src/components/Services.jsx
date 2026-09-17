@@ -197,6 +197,10 @@
 
 import { useState } from "react";
 import "./Services.css";
+import w1 from "../assets/w1.png";
+import w2 from "../assets/w2.png";
+import w3 from "../assets/w3.png";
+import w4 from "../assets/w4.png";
 
 const serviceGroups = [
   {
@@ -216,7 +220,7 @@ const serviceGroups = [
       "Overhead Waterproofing",
     ],
     image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85",
+      w1,
   },
 
   {
@@ -236,7 +240,7 @@ const serviceGroups = [
       "Sports Flooring",
     ],
     image:
-      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1400&q=85",
+   w2,
   },
 
   {
@@ -254,7 +258,7 @@ const serviceGroups = [
       "Anchoring Grout",
     ],
     image:
-      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1400&q=85",
+      w3,
   },
 
   {
@@ -272,7 +276,7 @@ const serviceGroups = [
       "Tile Adhesives & Grouts",
     ],
     image:
-      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1400&q=85",
+      w4,
   },
 ];
 
