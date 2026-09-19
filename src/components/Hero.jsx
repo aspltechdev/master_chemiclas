@@ -1,372 +1,372 @@
 
-// import { useEffect, useState } from "react";
-// import "./Hero.css";
-// const heroSlides = [
-//   {
-//     id: "01",
-//     category: "WATERPROOFING SYSTEMS",
-//     title: "Built to Protect.",
-//     highlight: "Finished to Last.",
-//     description:
-//       "Professional waterproofing systems engineered for terraces, podiums, basements, wet areas and critical structures.",
-//     image: "/waterproofing.jpg",
-//     tags: ["PU", "TERRACE", "PODIUM", "BASEMENT"],
-//   },
-//   {
-//     id: "02",
-//     category: "INDUSTRIAL FLOORING",
-//     title: "Performance",
-//     highlight: "Under Every Step.",
-//     description:
-//       "High-performance epoxy, PU and specialised flooring systems designed for industrial, commercial and institutional environments.",
-//     image: "/epoxy-flooring.jpg",
-//     tags: ["EPOXY", "PU", "SELF LEVEL", "POLISHING"],
-//   },
-//   {
-//     id: "03",
-//     category: "CONCRETE REPAIR",
-//     title: "Restore Strength.",
-//     highlight: "Extend Performance.",
-//     description:
-//       "Specialised concrete repair, injection and strengthening solutions for demanding structural and construction applications.",
-//     image: "/concrete-repair.jpg",
-//     tags: ["PU INJECTION", "EPOXY", "RCC", "REPAIR"],
-//   },
-//   {
-//     id: "04",
-//     category: "SURFACE PROTECTION",
-//     title: "Protection That",
-//     highlight: "Goes Further.",
-//     description:
-//       "Advanced protective coatings and surface treatment systems built for durability, exposure resistance and long-term performance.",
-//     image: "/pu-flooring.jpg",
-//     tags: ["COATINGS", "PU", "RCC", "CHEMICALS"],
-//   },
-// ];
-
-// export default function Hero() {
-//   const [activeSlide, setActiveSlide] = useState(0);
-//   const [paused, setPaused] = useState(false);
-
-//   const slide = heroSlides[activeSlide];
-
-//   /* Auto slider */
-//   useEffect(() => {
-//     if (paused) return;
-
-//     const timer = setInterval(() => {
-//       setActiveSlide((current) =>
-//         current === heroSlides.length - 1 ? 0 : current + 1
-//       );
-//     }, 6000);
-
-//     return () => clearInterval(timer);
-//   }, [paused]);
-
-//   const nextSlide = () => {
-//     setActiveSlide((current) =>
-//       current === heroSlides.length - 1 ? 0 : current + 1
-//     );
-//   };
-
-//   const prevSlide = () => {
-//     setActiveSlide((current) =>
-//       current === 0 ? heroSlides.length - 1 : current - 1
-//     );
-//   };
-
-//   return (
-//     <section
-//       className="hero"
-//       id="home"
-//       onMouseEnter={() => setPaused(true)}
-//       onMouseLeave={() => setPaused(false)}
-//     >
-
-//       {/* =================================================
-//           BACKGROUND
-//       ================================================= */}
-
-//       <div className="hero-background">
-//         {heroSlides.map((item, index) => (
-//           <div
-//             className={`hero-background-slide ${
-//               index === activeSlide ? "active" : ""
-//             }`}
-//             key={item.id}
-//           >
-//             <img
-//               src={item.image}
-//               alt={item.category}
-//             />
-//           </div>
-//         ))}
-//       </div>
+// // import { useEffect, useState } from "react";
+// // import "./Hero.css";
+// // const heroSlides = [
+// //   {
+// //     id: "01",
+// //     category: "WATERPROOFING SYSTEMS",
+// //     title: "Built to Protect.",
+// //     highlight: "Finished to Last.",
+// //     description:
+// //       "Professional waterproofing systems engineered for terraces, podiums, basements, wet areas and critical structures.",
+// //     image: "/waterproofing.jpg",
+// //     tags: ["PU", "TERRACE", "PODIUM", "BASEMENT"],
+// //   },
+// //   {
+// //     id: "02",
+// //     category: "INDUSTRIAL FLOORING",
+// //     title: "Performance",
+// //     highlight: "Under Every Step.",
+// //     description:
+// //       "High-performance epoxy, PU and specialised flooring systems designed for industrial, commercial and institutional environments.",
+// //     image: "/epoxy-flooring.jpg",
+// //     tags: ["EPOXY", "PU", "SELF LEVEL", "POLISHING"],
+// //   },
+// //   {
+// //     id: "03",
+// //     category: "CONCRETE REPAIR",
+// //     title: "Restore Strength.",
+// //     highlight: "Extend Performance.",
+// //     description:
+// //       "Specialised concrete repair, injection and strengthening solutions for demanding structural and construction applications.",
+// //     image: "/concrete-repair.jpg",
+// //     tags: ["PU INJECTION", "EPOXY", "RCC", "REPAIR"],
+// //   },
+// //   {
+// //     id: "04",
+// //     category: "SURFACE PROTECTION",
+// //     title: "Protection That",
+// //     highlight: "Goes Further.",
+// //     description:
+// //       "Advanced protective coatings and surface treatment systems built for durability, exposure resistance and long-term performance.",
+// //     image: "/pu-flooring.jpg",
+// //     tags: ["COATINGS", "PU", "RCC", "CHEMICALS"],
+// //   },
+// // ];
+
+// // export default function Hero() {
+// //   const [activeSlide, setActiveSlide] = useState(0);
+// //   const [paused, setPaused] = useState(false);
+
+// //   const slide = heroSlides[activeSlide];
+
+// //   /* Auto slider */
+// //   useEffect(() => {
+// //     if (paused) return;
+
+// //     const timer = setInterval(() => {
+// //       setActiveSlide((current) =>
+// //         current === heroSlides.length - 1 ? 0 : current + 1
+// //       );
+// //     }, 6000);
+
+// //     return () => clearInterval(timer);
+// //   }, [paused]);
+
+// //   const nextSlide = () => {
+// //     setActiveSlide((current) =>
+// //       current === heroSlides.length - 1 ? 0 : current + 1
+// //     );
+// //   };
+
+// //   const prevSlide = () => {
+// //     setActiveSlide((current) =>
+// //       current === 0 ? heroSlides.length - 1 : current - 1
+// //     );
+// //   };
+
+// //   return (
+// //     <section
+// //       className="hero"
+// //       id="home"
+// //       onMouseEnter={() => setPaused(true)}
+// //       onMouseLeave={() => setPaused(false)}
+// //     >
+
+// //       {/* =================================================
+// //           BACKGROUND
+// //       ================================================= */}
+
+// //       <div className="hero-background">
+// //         {heroSlides.map((item, index) => (
+// //           <div
+// //             className={`hero-background-slide ${
+// //               index === activeSlide ? "active" : ""
+// //             }`}
+// //             key={item.id}
+// //           >
+// //             <img
+// //               src={item.image}
+// //               alt={item.category}
+// //             />
+// //           </div>
+// //         ))}
+// //       </div>
 
-//       <div className="hero-dark-overlay" />
-//       <div className="hero-blue-overlay" />
+// //       <div className="hero-dark-overlay" />
+// //       <div className="hero-blue-overlay" />
 
-//       {/* Architectural grid */}
-//       <div className="hero-grid-overlay" />
+// //       {/* Architectural grid */}
+// //       <div className="hero-grid-overlay" />
 
-//       {/* =================================================
-//           TOP INFORMATION
-//       ================================================= */}
+// //       {/* =================================================
+// //           TOP INFORMATION
+// //       ================================================= */}
 
-//       <div className="hero-topbar">
+// //       <div className="hero-topbar">
 
-//         <div className="hero-top-left">
-//           <span className="hero-status-dot" />
-//           <span>MASTER CHEMICAL SOLUTION</span>
-//         </div>
+// //         <div className="hero-top-left">
+// //           <span className="hero-status-dot" />
+// //           <span>MASTER CHEMICAL SOLUTION</span>
+// //         </div>
 
-//         <div className="hero-top-right">
-//           <span>CONSTRUCTION · ENGINEERING · PROTECTION</span>
-//         </div>
+// //         <div className="hero-top-right">
+// //           <span>CONSTRUCTION · ENGINEERING · PROTECTION</span>
+// //         </div>
 
-//       </div>
+// //       </div>
 
-//       {/* =================================================
-//           MAIN CONTENT
-//       ================================================= */}
+// //       {/* =================================================
+// //           MAIN CONTENT
+// //       ================================================= */}
 
-//       <div className="hero-container">
+// //       <div className="hero-container">
 
-//         {/* LEFT */}
+// //         {/* LEFT */}
 
-//         <div
-//           className="hero-content"
-//           key={`content-${slide.id}`}
-//         >
+// //         <div
+// //           className="hero-content"
+// //           key={`content-${slide.id}`}
+// //         >
 
-//           <div className="hero-category">
+// //           <div className="hero-category">
 
-//             <span className="hero-category-line" />
+// //             <span className="hero-category-line" />
 
-//             <span>{slide.category}</span>
+// //             <span>{slide.category}</span>
 
-//           </div>
+// //           </div>
 
-//           <div className="hero-heading">
+// //           <div className="hero-heading">
 
-//             <h1>
-//               {slide.title}
-//               <br />
-//               <span>{slide.highlight}</span>
-//             </h1>
+// //             <h1>
+// //               {slide.title}
+// //               <br />
+// //               <span>{slide.highlight}</span>
+// //             </h1>
 
-//           </div>
+// //           </div>
 
-//           <p className="hero-description">
-//             {slide.description}
-//           </p>
+// //           <p className="hero-description">
+// //             {slide.description}
+// //           </p>
 
-//           <div className="hero-actions">
+// //           <div className="hero-actions">
 
-//             <a
-//               href="https://wa.me/917812043322?text=Hi%20Master%20Chemical%20Solution%2C%20I%20would%20like%20to%20discuss%20my%20project."
-//               target="_blank"
-//               rel="noreferrer"
-//               className="hero-primary-btn"
-//             >
-//               <span>Get Project Quote</span>
-//               <b>↗</b>
-//             </a>
+// //             <a
+// //               href="https://wa.me/917812043322?text=Hi%20Master%20Chemical%20Solution%2C%20I%20would%20like%20to%20discuss%20my%20project."
+// //               target="_blank"
+// //               rel="noreferrer"
+// //               className="hero-primary-btn"
+// //             >
+// //               <span>Get Project Quote</span>
+// //               <b>↗</b>
+// //             </a>
 
-//             <a
-//               href="tel:+917812043322"
-//               className="hero-secondary-btn"
-//             >
-//               <span>Call Our Team</span>
-//               <b>→</b>
-//             </a>
+// //             <a
+// //               href="tel:+917812043322"
+// //               className="hero-secondary-btn"
+// //             >
+// //               <span>Call Our Team</span>
+// //               <b>→</b>
+// //             </a>
 
-//           </div>
+// //           </div>
 
-//           {/* Bottom proof */}
+// //           {/* Bottom proof */}
 
-//           <div className="hero-proof">
+// //           <div className="hero-proof">
 
-//             <div className="hero-proof-icon">
-//               ✓
-//             </div>
+// //             <div className="hero-proof-icon">
+// //               ✓
+// //             </div>
 
-//             <div className="hero-proof-content">
-//               <strong>
-//                 Complete Surface Protection
-//               </strong>
+// //             <div className="hero-proof-content">
+// //               <strong>
+// //                 Complete Surface Protection
+// //               </strong>
 
-//               <span>
-//                 Waterproofing · Flooring · Repair · Coatings
-//               </span>
-//             </div>
+// //               <span>
+// //                 Waterproofing · Flooring · Repair · Coatings
+// //               </span>
+// //             </div>
 
-//           </div>
+// //           </div>
 
-//         </div>
+// //         </div>
 
-//         {/* =================================================
-//             RIGHT TECHNICAL PANEL
-//         ================================================= */}
+// //         {/* =================================================
+// //             RIGHT TECHNICAL PANEL
+// //         ================================================= */}
 
-//         <div
-//           className="hero-panel"
-//           key={`panel-${slide.id}`}
-//         >
+// //         <div
+// //           className="hero-panel"
+// //           key={`panel-${slide.id}`}
+// //         >
 
-//           <div className="hero-panel-header">
+// //           <div className="hero-panel-header">
 
-//             <div>
-//               <span>01 / SOLUTION</span>
-//               <strong>{slide.id}</strong>
-//             </div>
+// //             <div>
+// //               <span>01 / SOLUTION</span>
+// //               <strong>{slide.id}</strong>
+// //             </div>
 
-//             <div className="hero-panel-icon">
-//               ↗
-//             </div>
+// //             <div className="hero-panel-icon">
+// //               ↗
+// //             </div>
 
-//           </div>
+// //           </div>
 
-//           <div className="hero-panel-main">
+// //           <div className="hero-panel-main">
 
-//             <span className="hero-panel-small">
-//               ENGINEERED FOR
-//             </span>
+// //             <span className="hero-panel-small">
+// //               ENGINEERED FOR
+// //             </span>
 
-//             <h2>
-//               {slide.category}
-//             </h2>
+// //             <h2>
+// //               {slide.category}
+// //             </h2>
 
-//             <div className="hero-panel-divider" />
+// //             <div className="hero-panel-divider" />
 
-//             <div className="hero-panel-list">
+// //             <div className="hero-panel-list">
 
-//               {slide.tags.map((tag, index) => (
-//                 <div
-//                   className="hero-panel-item"
-//                   key={tag}
-//                 >
+// //               {slide.tags.map((tag, index) => (
+// //                 <div
+// //                   className="hero-panel-item"
+// //                   key={tag}
+// //                 >
 
-//                   <span>
-//                     {String(index + 1).padStart(2, "0")}
-//                   </span>
+// //                   <span>
+// //                     {String(index + 1).padStart(2, "0")}
+// //                   </span>
 
-//                   <strong>{tag}</strong>
+// //                   <strong>{tag}</strong>
 
-//                   <b>↗</b>
+// //                   <b>↗</b>
 
-//                 </div>
-//               ))}
+// //                 </div>
+// //               ))}
 
-//             </div>
+// //             </div>
 
-//           </div>
+// //           </div>
 
-//           <div className="hero-panel-footer">
+// //           <div className="hero-panel-footer">
 
-//             <span>SYSTEM</span>
+// //             <span>SYSTEM</span>
 
-//             <div className="hero-panel-badges">
+// //             <div className="hero-panel-badges">
 
-//               <i>PU</i>
-//               <i>EPOXY</i>
-//               <i>RCC</i>
+// //               <i>PU</i>
+// //               <i>EPOXY</i>
+// //               <i>RCC</i>
 
-//             </div>
+// //             </div>
 
-//           </div>
+// //           </div>
 
-//         </div>
+// //         </div>
 
-//       </div>
+// //       </div>
 
-//       {/* =================================================
-//           SLIDE NAVIGATION
-//       ================================================= */}
+// //       {/* =================================================
+// //           SLIDE NAVIGATION
+// //       ================================================= */}
 
-//       <div className="hero-navigation">
+// //       <div className="hero-navigation">
 
-//         <div className="hero-slide-navigation">
+// //         <div className="hero-slide-navigation">
 
-//           {heroSlides.map((item, index) => (
-//             <button
-//               key={item.id}
-//               className={
-//                 index === activeSlide
-//                   ? "hero-slide-button active"
-//                   : "hero-slide-button"
-//               }
-//               onClick={() => setActiveSlide(index)}
-//               aria-label={`Slide ${index + 1}`}
-//             >
+// //           {heroSlides.map((item, index) => (
+// //             <button
+// //               key={item.id}
+// //               className={
+// //                 index === activeSlide
+// //                   ? "hero-slide-button active"
+// //                   : "hero-slide-button"
+// //               }
+// //               onClick={() => setActiveSlide(index)}
+// //               aria-label={`Slide ${index + 1}`}
+// //             >
 
-//               <span>{item.id}</span>
+// //               <span>{item.id}</span>
 
-//               <i />
+// //               <i />
 
-//             </button>
-//           ))}
+// //             </button>
+// //           ))}
 
-//         </div>
+// //         </div>
 
-//         <div className="hero-arrow-navigation">
+// //         <div className="hero-arrow-navigation">
 
-//           <button
-//             onClick={prevSlide}
-//             aria-label="Previous slide"
-//           >
-//             ←
-//           </button>
+// //           <button
+// //             onClick={prevSlide}
+// //             aria-label="Previous slide"
+// //           >
+// //             ←
+// //           </button>
 
-//           <button
-//             onClick={nextSlide}
-//             aria-label="Next slide"
-//           >
-//             →
-//           </button>
+// //           <button
+// //             onClick={nextSlide}
+// //             aria-label="Next slide"
+// //           >
+// //             →
+// //           </button>
 
-//         </div>
+// //         </div>
 
-//       </div>
+// //       </div>
 
-//       {/* =================================================
-//           SLIDE PROGRESS
-//       ================================================= */}
+// //       {/* =================================================
+// //           SLIDE PROGRESS
+// //       ================================================= */}
 
-//       <div className="hero-progress">
+// //       <div className="hero-progress">
 
-//         <div
-//           className="hero-progress-fill"
-//           key={`${activeSlide}-${paused}`}
-//         />
+// //         <div
+// //           className="hero-progress-fill"
+// //           key={`${activeSlide}-${paused}`}
+// //         />
 
-//       </div>
+// //       </div>
 
-//       {/* =================================================
-//           SCROLL
-//       ================================================= */}
+// //       {/* =================================================
+// //           SCROLL
+// //       ================================================= */}
 
-//       <div className="hero-scroll-indicator">
+// //       <div className="hero-scroll-indicator">
 
-//         <span>SCROLL</span>
+// //         <span>SCROLL</span>
 
-//         <div>
-//           <i />
-//         </div>
+// //         <div>
+// //           <i />
+// //         </div>
 
-//       </div>
+// //       </div>
 
-//       {/* =================================================
-//           LARGE BACKGROUND NUMBER
-//       ================================================= */}
+// //       {/* =================================================
+// //           LARGE BACKGROUND NUMBER
+// //       ================================================= */}
 
-//       <div className="hero-background-number">
-//         {slide.id}
-//       </div>
+// //       <div className="hero-background-number">
+// //         {slide.id}
+// //       </div>
 
-//     </section>
-//   );
-// }
+// //     </section>
+// //   );
+// // }
 
 
 
@@ -405,6 +405,295 @@
 
 
 
+
+
+
+
+
+
+
+
+// // // Hero.jsx
+// // import { useEffect, useState } from "react";
+// // import "./Hero.css";
+// // import hero1 from "../assets/hero112.png";
+// // import hero2 from "../assets/hero122.png";
+// // import hero3 from "../assets/hero113.png";
+// // import hero4 from "../assets/hero114.png";
+// // const heroSlides = [
+// //   {
+// //     id: "01",
+// //     category: "WATERPROOFING SYSTEMS",
+// //     title: "Built to Protect.",
+// //     highlight: "Finished to Last.",
+// //     description:
+// //       "Professional waterproofing systems engineered for terraces, podiums, basements, wet areas and critical structures.",
+// //     image:
+// //       hero1,
+// //     tags: ["PU", "TERRACE", "PODIUM", "BASEMENT"],
+// //   },
+// //   {
+// //     id: "02",
+// //     category: "INDUSTRIAL FLOORING",
+// //     title: "Performance",
+// //     highlight: "Under Every Step.",
+// //     description:
+// //       "High-performance epoxy, PU and specialised flooring systems designed for industrial, commercial and institutional environments.",
+// //     image:
+// //      hero2,
+// //     tags: ["EPOXY", "PU", "SELF LEVEL", "POLISHING"],
+// //   },
+// //   {
+// //     id: "03",
+// //     category: "CONCRETE REPAIR",
+// //     title: "Restore Strength.",
+// //     highlight: "Extend Performance.",
+// //     description:
+// //       "Specialised concrete repair, injection and strengthening solutions for demanding structural and construction applications.",
+// //     image:
+// //      hero3,
+// //     tags: ["PU INJECTION", "EPOXY", "RCC", "REPAIR"],
+// //   },
+// //   {
+// //     id: "04",
+// //     category: "SURFACE PROTECTION",
+// //     title: "Protection That",
+// //     highlight: "Goes Further.",
+// //     description:
+// //       "Advanced protective coatings and surface treatment systems built for durability, exposure resistance and long-term performance.",
+// //     image:
+// //      hero4,
+// //     tags: ["COATINGS", "PU", "RCC", "CHEMICALS"],
+// //   },
+// // ];
+
+// // export default function Hero() {
+// //   const [activeSlide, setActiveSlide] = useState(0);
+// //   const [paused, setPaused] = useState(false);
+
+// //   const slide = heroSlides[activeSlide];
+
+// //   /* Auto slider */
+// //   useEffect(() => {
+// //     if (paused) return;
+
+// //     const timer = setInterval(() => {
+// //       setActiveSlide((current) =>
+// //         current === heroSlides.length - 1 ? 0 : current + 1
+// //       );
+// //     }, 6000);
+
+// //     return () => clearInterval(timer);
+// //   }, [paused]);
+
+// //   const nextSlide = () => {
+// //     setActiveSlide((current) =>
+// //       current === heroSlides.length - 1 ? 0 : current + 1
+// //     );
+// //   };
+
+// //   const prevSlide = () => {
+// //     setActiveSlide((current) =>
+// //       current === 0 ? heroSlides.length - 1 : current - 1
+// //     );
+// //   };
+
+// //   return (
+// //     <section
+// //       className="hero"
+// //       id="home"
+// //       onMouseEnter={() => setPaused(true)}
+// //       onMouseLeave={() => setPaused(false)}
+// //     >
+// //       {/* =================================================
+// //           BACKGROUND
+// //       ================================================= */}
+// //       <div className="hero-background">
+// //         {heroSlides.map((item, index) => (
+// //           <div
+// //             className={`hero-background-slide ${
+// //               index === activeSlide ? "active" : ""
+// //             }`}
+// //             key={item.id}
+// //           >
+// //             <img src={item.image} alt={item.category} />
+// //           </div>
+// //         ))}
+// //       </div>
+
+// //       <div className="hero-dark-overlay" />
+// //       <div className="hero-blue-overlay" />
+
+// //       {/* Architectural grid */}
+// //       <div className="hero-grid-overlay" />
+
+// //       {/* =================================================
+// //           TOP INFORMATION
+// //       ================================================= */}
+// //       <div className="hero-topbar">
+// //         <div className="hero-top-left">
+// //           <span className="hero-status-dot" />
+// //           <span>MASTER CHEMICAL SOLUTION</span>
+// //         </div>
+
+// //         <div className="hero-top-right">
+// //           <span>CONSTRUCTION · ENGINEERING · PROTECTION</span>
+// //         </div>
+// //       </div>
+
+// //       {/* =================================================
+// //           MAIN CONTENT
+// //       ================================================= */}
+// //       <div className="hero-container">
+// //         {/* LEFT */}
+// //         <div className="hero-content" key={`content-${slide.id}`}>
+// //           <div className="hero-category">
+// //             <span className="hero-category-line" />
+// //             <span>{slide.category}</span>
+// //           </div>
+
+// //           <div className="hero-heading">
+// //             <h1>
+// //               {slide.title}
+// //               <br />
+// //               <span>{slide.highlight}</span>
+// //             </h1>
+// //           </div>
+
+// //           <p className="hero-description">{slide.description}</p>
+
+// //           <div className="hero-actions">
+// //             <a
+// //               href="https://wa.me/917812043322?text=Hi%20Master%20Chemical%20Solution%2C%20I%20would%20like%20to%20discuss%20my%20project."
+// //               target="_blank"
+// //               rel="noreferrer"
+// //               className="hero-primary-btn"
+// //             >
+// //               <span>Get Project Quote</span>
+// //               <b>↗</b>
+// //             </a>
+
+// //             <a href="tel:+917812043322" className="hero-secondary-btn">
+// //               <span>Call Our Team</span>
+// //               <b>→</b>
+// //             </a>
+// //           </div>
+
+// //           {/* Bottom proof */}
+// //           <div className="hero-proof">
+// //             <div className="hero-proof-icon">✓</div>
+
+// //             <div className="hero-proof-content">
+// //               <strong>Complete Surface Protection</strong>
+// //               <span>Waterproofing · Flooring · Repair · Coatings</span>
+// //             </div>
+// //           </div>
+// //         </div>
+
+// //         {/* =================================================
+// //             RIGHT TECHNICAL PANEL
+// //         ================================================= */}
+// //         <div className="hero-panel" key={`panel-${slide.id}`}>
+// //           <div className="hero-panel-header">
+// //             <div>
+// //               <span>01 / SOLUTION</span>
+// //               <strong>{slide.id}</strong>
+// //             </div>
+
+// //             <div className="hero-panel-icon">↗</div>
+// //           </div>
+
+// //           <div className="hero-panel-main">
+// //             <span className="hero-panel-small">ENGINEERED FOR</span>
+
+// //             <h2>{slide.category}</h2>
+
+// //             <div className="hero-panel-divider" />
+
+// //             <div className="hero-panel-list">
+// //               {slide.tags.map((tag, index) => (
+// //                 <div className="hero-panel-item" key={tag}>
+// //                   <span>{String(index + 1).padStart(2, "0")}</span>
+// //                   <strong>{tag}</strong>
+// //                   <b>↗</b>
+// //                 </div>
+// //               ))}
+// //             </div>
+// //           </div>
+
+// //           <div className="hero-panel-footer">
+// //             <span>SYSTEM</span>
+
+// //             <div className="hero-panel-badges">
+// //               <i>PU</i>
+// //               <i>EPOXY</i>
+// //               <i>RCC</i>
+// //             </div>
+// //           </div>
+// //         </div>
+// //       </div>
+
+// //       {/* =================================================
+// //           SLIDE NAVIGATION
+// //       ================================================= */}
+// //       <div className="hero-navigation">
+// //         <div className="hero-slide-navigation">
+// //           {heroSlides.map((item, index) => (
+// //             <button
+// //               key={item.id}
+// //               className={
+// //                 index === activeSlide
+// //                   ? "hero-slide-button active"
+// //                   : "hero-slide-button"
+// //               }
+// //               onClick={() => setActiveSlide(index)}
+// //               aria-label={`Slide ${index + 1}`}
+// //             >
+// //               <span>{item.id}</span>
+// //               <i />
+// //             </button>
+// //           ))}
+// //         </div>
+
+// //         <div className="hero-arrow-navigation">
+// //           <button onClick={prevSlide} aria-label="Previous slide">
+// //             ←
+// //           </button>
+
+// //           <button onClick={nextSlide} aria-label="Next slide">
+// //             →
+// //           </button>
+// //         </div>
+// //       </div>
+
+// //       {/* =================================================
+// //           SLIDE PROGRESS
+// //       ================================================= */}
+// //       <div className="hero-progress">
+// //         <div
+// //           className="hero-progress-fill"
+// //           key={`${activeSlide}-${paused}`}
+// //         />
+// //       </div>
+
+// //       {/* =================================================
+// //           SCROLL
+// //       ================================================= */}
+// //       <div className="hero-scroll-indicator">
+// //         <span>SCROLL</span>
+
+// //         <div>
+// //           <i />
+// //         </div>
+// //       </div>
+
+// //       {/* =================================================
+// //           LARGE BACKGROUND NUMBER
+// //       ================================================= */}
+// //       <div className="hero-background-number">{slide.id}</div>
+// //     </section>
+// //   );
+// // }
 
 
 
@@ -420,6 +709,7 @@
 // import hero2 from "../assets/hero122.png";
 // import hero3 from "../assets/hero113.png";
 // import hero4 from "../assets/hero114.png";
+
 // const heroSlides = [
 //   {
 //     id: "01",
@@ -428,8 +718,7 @@
 //     highlight: "Finished to Last.",
 //     description:
 //       "Professional waterproofing systems engineered for terraces, podiums, basements, wet areas and critical structures.",
-//     image:
-//       hero1,
+//     image: hero1,
 //     tags: ["PU", "TERRACE", "PODIUM", "BASEMENT"],
 //   },
 //   {
@@ -439,8 +728,7 @@
 //     highlight: "Under Every Step.",
 //     description:
 //       "High-performance epoxy, PU and specialised flooring systems designed for industrial, commercial and institutional environments.",
-//     image:
-//      hero2,
+//     image: hero2,
 //     tags: ["EPOXY", "PU", "SELF LEVEL", "POLISHING"],
 //   },
 //   {
@@ -450,8 +738,7 @@
 //     highlight: "Extend Performance.",
 //     description:
 //       "Specialised concrete repair, injection and strengthening solutions for demanding structural and construction applications.",
-//     image:
-//      hero3,
+//     image: hero3,
 //     tags: ["PU INJECTION", "EPOXY", "RCC", "REPAIR"],
 //   },
 //   {
@@ -461,8 +748,7 @@
 //     highlight: "Goes Further.",
 //     description:
 //       "Advanced protective coatings and surface treatment systems built for durability, exposure resistance and long-term performance.",
-//     image:
-//      hero4,
+//     image: hero4,
 //     tags: ["COATINGS", "PU", "RCC", "CHEMICALS"],
 //   },
 // ];
@@ -552,13 +838,12 @@
 //             <span>{slide.category}</span>
 //           </div>
 
-//           <div className="hero-heading">
-//             <h1>
-//               {slide.title}
-//               <br />
-//               <span>{slide.highlight}</span>
-//             </h1>
-//           </div>
+//           <h1 className="hero-heading">
+//             <span className="hero-heading-line">{slide.title}</span>
+//             <span className="hero-heading-line hero-heading-line--accent">
+//               {slide.highlight}
+//             </span>
+//           </h1>
 
 //           <p className="hero-description">{slide.description}</p>
 
@@ -696,12 +981,6 @@
 // }
 
 
-
-
-
-
-
-
 // Hero.jsx
 import { useEffect, useState } from "react";
 import "./Hero.css";
@@ -753,36 +1032,30 @@ const heroSlides = [
   },
 ];
 
+const trustPoints = [
+  "ISI-Grade Raw Materials",
+  "Trained Application Team",
+  "Pan-India Project Support",
+];
+
 export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [paused, setPaused] = useState(false);
 
   const slide = heroSlides[activeSlide];
 
-  /* Auto slider */
   useEffect(() => {
     if (paused) return;
-
     const timer = setInterval(() => {
-      setActiveSlide((current) =>
-        current === heroSlides.length - 1 ? 0 : current + 1
-      );
+      setActiveSlide((c) => (c === heroSlides.length - 1 ? 0 : c + 1));
     }, 6000);
-
     return () => clearInterval(timer);
   }, [paused]);
 
-  const nextSlide = () => {
-    setActiveSlide((current) =>
-      current === heroSlides.length - 1 ? 0 : current + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setActiveSlide((current) =>
-      current === 0 ? heroSlides.length - 1 : current - 1
-    );
-  };
+  const nextSlide = () =>
+    setActiveSlide((c) => (c === heroSlides.length - 1 ? 0 : c + 1));
+  const prevSlide = () =>
+    setActiveSlide((c) => (c === 0 ? heroSlides.length - 1 : c - 1));
 
   return (
     <section
@@ -791,191 +1064,106 @@ export default function Hero() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* =================================================
-          BACKGROUND
-      ================================================= */}
+      {/* ---------- BACKGROUND IMAGE SLIDER ---------- */}
       <div className="hero-background">
         {heroSlides.map((item, index) => (
           <div
-            className={`hero-background-slide ${
-              index === activeSlide ? "active" : ""
-            }`}
             key={item.id}
+            className={`hero-bg-slide ${index === activeSlide ? "active" : ""}`}
           >
             <img src={item.image} alt={item.category} />
           </div>
         ))}
       </div>
 
-      <div className="hero-dark-overlay" />
-      <div className="hero-blue-overlay" />
+      <div className="hero-overlay" />
 
-      {/* Architectural grid */}
-      <div className="hero-grid-overlay" />
-
-      {/* =================================================
-          TOP INFORMATION
-      ================================================= */}
-      <div className="hero-topbar">
-        <div className="hero-top-left">
-          <span className="hero-status-dot" />
-          <span>MASTER CHEMICAL SOLUTION</span>
-        </div>
-
-        <div className="hero-top-right">
-          <span>CONSTRUCTION · ENGINEERING · PROTECTION</span>
-        </div>
-      </div>
-
-      {/* =================================================
-          MAIN CONTENT
-      ================================================= */}
+      {/* ---------- CONTENT ---------- */}
       <div className="hero-container">
-        {/* LEFT */}
         <div className="hero-content" key={`content-${slide.id}`}>
-          <div className="hero-category">
-            <span className="hero-category-line" />
-            <span>{slide.category}</span>
+          <div className="hero-badge">
+            <span className="hero-badge-dot" />
+            <span>MASTER CHEMICAL SOLUTION</span>
           </div>
 
+          <p className="hero-eyebrow">{slide.category}</p>
+
           <h1 className="hero-heading">
-            <span className="hero-heading-line">{slide.title}</span>
-            <span className="hero-heading-line hero-heading-line--accent">
-              {slide.highlight}
-            </span>
+            <span>{slide.title}</span>
+            <span className="hero-heading-accent">{slide.highlight}</span>
           </h1>
 
           <p className="hero-description">{slide.description}</p>
 
+          {/* Trust strip */}
+          <ul className="hero-trust">
+            {trustPoints.map((point) => (
+              <li key={point}>
+                <span className="hero-trust-icon">✓</span>
+                {point}
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA buttons — jump to contact section / call */}
           <div className="hero-actions">
-            <a
-              href="https://wa.me/917812043322?text=Hi%20Master%20Chemical%20Solution%2C%20I%20would%20like%20to%20discuss%20my%20project."
-              target="_blank"
-              rel="noreferrer"
-              className="hero-primary-btn"
-            >
-              <span>Get Project Quote</span>
-              <b>↗</b>
+            <a href="#contact" className="hero-btn hero-btn--primary">
+              Get Free Site Visit
             </a>
 
-            <a href="tel:+917812043322" className="hero-secondary-btn">
-              <span>Call Our Team</span>
-              <b>→</b>
+            <a href="tel:+917812043322" className="hero-btn hero-btn--secondary">
+              📞 +91 78120 43322
             </a>
           </div>
 
-          {/* Bottom proof */}
-          <div className="hero-proof">
-            <div className="hero-proof-icon">✓</div>
-
-            <div className="hero-proof-content">
-              <strong>Complete Surface Protection</strong>
-              <span>Waterproofing · Flooring · Repair · Coatings</span>
-            </div>
-          </div>
-        </div>
-
-        {/* =================================================
-            RIGHT TECHNICAL PANEL
-        ================================================= */}
-        <div className="hero-panel" key={`panel-${slide.id}`}>
-          <div className="hero-panel-header">
+          {/* Stats strip */}
+          <div className="hero-stats">
             <div>
-              <span>01 / SOLUTION</span>
-              <strong>{slide.id}</strong>
+              <strong>15+</strong>
+              <span>Years Experience</span>
             </div>
-
-            <div className="hero-panel-icon">↗</div>
-          </div>
-
-          <div className="hero-panel-main">
-            <span className="hero-panel-small">ENGINEERED FOR</span>
-
-            <h2>{slide.category}</h2>
-
-            <div className="hero-panel-divider" />
-
-            <div className="hero-panel-list">
-              {slide.tags.map((tag, index) => (
-                <div className="hero-panel-item" key={tag}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{tag}</strong>
-                  <b>↗</b>
-                </div>
-              ))}
+            <div>
+              <strong>2500+</strong>
+              <span>Projects Delivered</span>
             </div>
-          </div>
-
-          <div className="hero-panel-footer">
-            <span>SYSTEM</span>
-
-            <div className="hero-panel-badges">
-              <i>PU</i>
-              <i>EPOXY</i>
-              <i>RCC</i>
+            <div>
+              <strong>100%</strong>
+              <span>Site Supervision</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* =================================================
-          SLIDE NAVIGATION
-      ================================================= */}
+      {/* ---------- SLIDE NAVIGATION ---------- */}
       <div className="hero-navigation">
-        <div className="hero-slide-navigation">
+        <div className="hero-dots">
           {heroSlides.map((item, index) => (
             <button
               key={item.id}
-              className={
-                index === activeSlide
-                  ? "hero-slide-button active"
-                  : "hero-slide-button"
-              }
+              className={index === activeSlide ? "active" : ""}
               onClick={() => setActiveSlide(index)}
               aria-label={`Slide ${index + 1}`}
-            >
-              <span>{item.id}</span>
-              <i />
-            </button>
+            />
           ))}
         </div>
 
-        <div className="hero-arrow-navigation">
-          <button onClick={prevSlide} aria-label="Previous slide">
-            ←
+        <div className="hero-arrows">
+          <button onClick={prevSlide} aria-label="Previous">
+            ‹
           </button>
-
-          <button onClick={nextSlide} aria-label="Next slide">
-            →
+          <button onClick={nextSlide} aria-label="Next">
+            ›
           </button>
         </div>
       </div>
 
-      {/* =================================================
-          SLIDE PROGRESS
-      ================================================= */}
+      {/* ---------- PROGRESS ---------- */}
       <div className="hero-progress">
         <div
           className="hero-progress-fill"
           key={`${activeSlide}-${paused}`}
         />
       </div>
-
-      {/* =================================================
-          SCROLL
-      ================================================= */}
-      <div className="hero-scroll-indicator">
-        <span>SCROLL</span>
-
-        <div>
-          <i />
-        </div>
-      </div>
-
-      {/* =================================================
-          LARGE BACKGROUND NUMBER
-      ================================================= */}
-      <div className="hero-background-number">{slide.id}</div>
     </section>
   );
 }

@@ -1,0 +1,159 @@
+/* =========================================================
+   WHATSAPP FLOATING BUTTON
+   Bottom-right, always visible, brand green
+========================================================= */
+
+.wa-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 100;
+
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  height: 56px;
+  padding: 0 20px 0 16px;
+
+  /* Brand */
+  background: #25d366;
+  color: #ffffff;
+
+  border-radius: 999px;
+
+  font-family: "Inter", "Manrope", system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+
+  /* Shadow + glow */
+  box-shadow:
+    0 12px 28px -8px rgba(37, 211, 102, 0.55),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.wa-float--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.wa-float:hover {
+  background: #1eb955;
+  box-shadow:
+    0 16px 34px -8px rgba(37, 211, 102, 0.7),
+    0 6px 16px rgba(0, 0, 0, 0.18);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.wa-float:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Icon */
+.wa-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+
+  display: block;
+}
+
+/* Label */
+.wa-label {
+  display: inline-block;
+}
+
+/* Pulsing ring */
+.wa-pulse {
+  position: absolute;
+  inset: 0;
+
+  border-radius: 999px;
+
+  background: #25d366;
+
+  opacity: 0.55;
+
+  animation: waPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes waPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+/* On mobile — collapse to icon-only circle */
+@media (max-width: 640px) {
+  .wa-float {
+    right: 16px;
+    bottom: 16px;
+
+    width: 56px;
+    height: 56px;
+    padding: 0;
+
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .wa-label {
+    display: none;
+  }
+
+  .wa-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* If user prefers reduced motion, kill the pulse + entrance */
+@media (prefers-reduced-motion: reduce) {
+  .wa-float {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    pointer-events: auto !important;
+  }
+
+  .wa-pulse {
+    animation: none !important;
+    display: none;
+  }
+
+  .wa-float:hover {
+    transform: none !important;
+  }
+}

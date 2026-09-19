@@ -195,13 +195,372 @@
 // }
 
 
-import { useState } from "react";
+// import { useState } from "react";
+// import "./Services.css";
+// import w1 from "../assets/w1.png";
+// import w2 from "../assets/w2.png";
+// import w3 from "../assets/w3.png";
+// import w4 from "../assets/w4.png";
+
+// const serviceGroups = [
+//   {
+//     number: "01",
+//     title: "Waterproofing",
+//     label: "WATER PROTECTION",
+//     short:
+//       "Protecting structures from water ingress with specialised waterproofing systems.",
+//     items: [
+//       "PU Waterproofing",
+//       "Toilet Waterproofing",
+//       "Terrace Waterproofing",
+//       "Podium Waterproofing",
+//       "Basement Waterproofing",
+//       "Lift Pit Waterproofing",
+//       "Sump Waterproofing",
+//       "Overhead Waterproofing",
+//     ],
+//     image:
+//       w1,
+//   },
+
+//   {
+//     number: "02",
+//     title: "Industrial Flooring",
+//     label: "HIGH PERFORMANCE SURFACES",
+//     short:
+//       "High-performance flooring systems designed for demanding industrial and commercial environments.",
+//     items: [
+//       "Epoxy Resin Flooring",
+//       "Epoxy Flooring",
+//       "PU Resin Flooring",
+//       "PU Flooring",
+//       "Cement Self Leveling",
+//       "Concrete Polishing",
+//       "Terrazzo Flooring",
+//       "Sports Flooring",
+//     ],
+//     image:
+//    w2,
+//   },
+
+//   {
+//     number: "03",
+//     title: "Repair & Injection",
+//     label: "STRUCTURAL RESTORATION",
+//     short:
+//       "Repairing, strengthening and restoring concrete surfaces and structural elements.",
+//     items: [
+//       "PU Injection",
+//       "Epoxy Injection",
+//       "RCC Strengthening",
+//       "Concrete Repair",
+//       "Expansion Joint Treatment",
+//       "Anchoring Grout",
+//     ],
+//     image:
+//       w3,
+//   },
+
+//   {
+//     number: "04",
+//     title: "Surface Protection",
+//     label: "PROTECTIVE SYSTEMS",
+//     short:
+//       "Long-lasting surface protection systems for exposed and demanding environments.",
+//     items: [
+//       "Protective Coatings",
+//       "Terrace Coating",
+//       "Oxide Flooring",
+//       "Kaavi Flooring",
+//       "Chemical Surface Treatment",
+//       "Tile Adhesives & Grouts",
+//     ],
+//     image:
+//       w4,
+//   },
+// ];
+
+// export default function Services() {
+//   const [activeService, setActiveService] = useState(0);
+
+//   const active = serviceGroups[activeService];
+
+//   return (
+//     <section className="services-section" id="services">
+
+//       {/* =========================================
+//           BACKGROUND
+//       ========================================= */}
+
+//       <div className="services-bg-grid" />
+
+//       <div className="services-container">
+
+//         {/* =========================================
+//             HEADER
+//         ========================================= */}
+
+//         <div className="services-header">
+
+//           <div className="services-heading">
+
+//             <span className="section-kicker">
+//               WHAT WE DO
+//             </span>
+
+//             <h2>
+//               Engineered
+//               <br />
+//               <em>surface solutions.</em>
+//             </h2>
+
+//           </div>
+
+//           <div className="services-header-right">
+
+//             <div className="services-count">
+//               <strong>04</strong>
+//               <span>SERVICE CATEGORIES</span>
+//             </div>
+
+//             <p>
+//               Specialised construction chemical systems
+//               designed around the surface, environment
+//               and performance requirements of every project.
+//             </p>
+
+//           </div>
+
+//         </div>
+
+
+//         {/* =========================================
+//             ACTIVE IMAGE / INFO
+//         ========================================= */}
+
+//         <div className="services-feature">
+
+//           <div className="services-feature-image">
+
+//             {serviceGroups.map((service, index) => (
+//               <img
+//                 key={service.number}
+//                 src={service.image}
+//                 alt={service.title}
+//                 className={
+//                   index === activeService
+//                     ? "active"
+//                     : ""
+//                 }
+//               />
+//             ))}
+
+//             <div className="services-feature-overlay" />
+
+//             <div className="services-feature-number">
+//               {active.number}
+//             </div>
+
+//             <div className="services-feature-label">
+//               <span>FEATURED SYSTEM</span>
+//               <strong>{active.label}</strong>
+//             </div>
+
+//           </div>
+
+
+//           <div className="services-feature-content">
+
+//             <div className="services-feature-top">
+
+//               <span>
+//                 SERVICE / {active.number}
+//               </span>
+
+//               <b>↗</b>
+
+//             </div>
+
+//             <h3>
+//               {active.title}
+//             </h3>
+
+//             <p>
+//               {active.short}
+//             </p>
+
+//             <div className="services-feature-line" />
+
+//             <div className="services-feature-meta">
+
+//               <span>
+//                 SYSTEMS
+//               </span>
+
+//               <strong>
+//                 {String(active.items.length).padStart(2, "0")}
+//               </strong>
+
+//             </div>
+
+//           </div>
+
+//         </div>
+
+
+//         {/* =========================================
+//             SERVICE LIST
+//         ========================================= */}
+
+//         <div className="services-list">
+
+//           {serviceGroups.map((service, index) => {
+
+//             const isActive =
+//               index === activeService;
+
+//             return (
+//               <article
+//                 className={
+//                   isActive
+//                     ? "service-row active"
+//                     : "service-row"
+//                 }
+//                 key={service.number}
+//                 onMouseEnter={() =>
+//                   setActiveService(index)
+//                 }
+//               >
+
+//                 {/* Number */}
+
+//                 <div className="service-row-number">
+//                   {service.number}
+//                 </div>
+
+
+//                 {/* Main title */}
+
+//                 <div className="service-row-title">
+
+//                   <span>
+//                     {service.label}
+//                   </span>
+
+//                   <h3>
+//                     {service.title}
+//                   </h3>
+
+//                 </div>
+
+
+//                 {/* Items */}
+
+//                 <div className="service-row-items">
+
+//                   {service.items.map((item) => (
+//                     <span key={item}>
+//                       {item}
+//                     </span>
+//                   ))}
+
+//                 </div>
+
+
+//                 {/* Arrow */}
+
+//                 <div className="service-row-arrow">
+//                   ↗
+//                 </div>
+
+//               </article>
+//             );
+//           })}
+
+//         </div>
+
+
+//         {/* =========================================
+//             BOTTOM
+//         ========================================= */}
+
+//         <div className="services-bottom">
+
+//           <div className="services-bottom-left">
+
+//             <span className="services-red-line" />
+
+//             <span>
+//               FROM SUBSTRATE TO FINISH
+//             </span>
+
+//           </div>
+
+//           <p>
+//             One partner for specialised surface
+//             protection requirements.
+//           </p>
+
+//           <a
+//             href="#contact"
+//             className="services-bottom-link"
+//           >
+//             Discuss your requirement
+//             <span>↗</span>
+//           </a>
+
+//         </div>
+
+//       </div>
+
+//     </section>
+//   );
+// }
+
+// Services.jsx
+import { useEffect, useRef, useState } from "react";
 import "./Services.css";
 import w1 from "../assets/w1.png";
 import w2 from "../assets/w2.png";
 import w3 from "../assets/w3.png";
 import w4 from "../assets/w4.png";
 
+/* =========================================================
+   SCROLL REVEAL HOOK
+========================================================= */
+function useInView(options = {}) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px", ...options }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [options]);
+
+  return [ref, inView];
+}
+
+/* =========================================================
+   DATA
+========================================================= */
 const serviceGroups = [
   {
     number: "01",
@@ -219,10 +578,8 @@ const serviceGroups = [
       "Sump Waterproofing",
       "Overhead Waterproofing",
     ],
-    image:
-      w1,
+    image: w1,
   },
-
   {
     number: "02",
     title: "Industrial Flooring",
@@ -239,10 +596,8 @@ const serviceGroups = [
       "Terrazzo Flooring",
       "Sports Flooring",
     ],
-    image:
-   w2,
+    image: w2,
   },
-
   {
     number: "03",
     title: "Repair & Injection",
@@ -257,10 +612,8 @@ const serviceGroups = [
       "Expansion Joint Treatment",
       "Anchoring Grout",
     ],
-    image:
-      w3,
+    image: w3,
   },
-
   {
     number: "04",
     title: "Surface Protection",
@@ -275,244 +628,180 @@ const serviceGroups = [
       "Chemical Surface Treatment",
       "Tile Adhesives & Grouts",
     ],
-    image:
-      w4,
+    image: w4,
   },
 ];
 
+/* =========================================================
+   COMPONENT
+========================================================= */
 export default function Services() {
   const [activeService, setActiveService] = useState(0);
+
+  const [headRef, headInView]   = useInView();
+  const [bodyRef, bodyInView]   = useInView();
+  const [listRef, listInView]   = useInView();
+  const [footRef, footInView]   = useInView();
 
   const active = serviceGroups[activeService];
 
   return (
-    <section className="services-section" id="services">
+    <section className="svc-section" id="solutions">
 
-      {/* =========================================
-          BACKGROUND
-      ========================================= */}
+      <div className="svc-container">
 
-      <div className="services-bg-grid" />
-
-      <div className="services-container">
-
-        {/* =========================================
-            HEADER
-        ========================================= */}
-
-        <div className="services-header">
-
-          <div className="services-heading">
-
-            <span className="section-kicker">
+        {/* ================= HEADER ================= */}
+        <div
+          ref={headRef}
+          className={`svc-header svc-reveal ${
+            headInView ? "svc-is-visible" : ""
+          }`}
+        >
+          <div className="svc-header-left">
+            <div className="svc-kicker">
+              <span className="svc-kicker-line" />
               WHAT WE DO
-            </span>
-
-            <h2>
-              Engineered
-              <br />
-              <em>surface solutions.</em>
-            </h2>
-
-          </div>
-
-          <div className="services-header-right">
-
-            <div className="services-count">
-              <strong>04</strong>
-              <span>SERVICE CATEGORIES</span>
             </div>
 
-            <p>
-              Specialised construction chemical systems
-              designed around the surface, environment
-              and performance requirements of every project.
-            </p>
-
+            <h2 className="svc-title">
+              Engineered systems for
+              <br />
+              <em>every surface requirement.</em>
+            </h2>
           </div>
 
+          <div className="svc-header-right">
+            <p>
+              Four specialised service categories covering waterproofing,
+              industrial flooring, structural repair and surface protection —
+              each delivered with the right system, trained applicators and
+              on-site supervision.
+            </p>
+          </div>
         </div>
 
+        {/* ================= TABS ================= */}
+        <div
+          ref={bodyRef}
+          className={`svc-tabs svc-reveal ${
+            bodyInView ? "svc-is-visible" : ""
+          }`}
+          role="tablist"
+          aria-label="Service categories"
+        >
+          {serviceGroups.map((service, index) => {
+            const isActive = index === activeService;
+            return (
+              <button
+                key={service.number}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                className={`svc-tab ${isActive ? "is-active" : ""}`}
+                onClick={() => setActiveService(index)}
+                onMouseEnter={() => setActiveService(index)}
+              >
+                <span className="svc-tab-number">{service.number}</span>
+                <span className="svc-tab-title">{service.title}</span>
+              </button>
+            );
+          })}
+        </div>
 
-        {/* =========================================
-            ACTIVE IMAGE / INFO
-        ========================================= */}
+        {/* ================= FEATURE PANEL ================= */}
+        <div className="svc-feature">
 
-        <div className="services-feature">
-
-          <div className="services-feature-image">
-
+          {/* ---- IMAGE ---- */}
+          <div className="svc-feature-image">
             {serviceGroups.map((service, index) => (
               <img
                 key={service.number}
                 src={service.image}
                 alt={service.title}
-                className={
-                  index === activeService
-                    ? "active"
-                    : ""
-                }
+                className={index === activeService ? "is-active" : ""}
+                loading="lazy"
               />
             ))}
 
-            <div className="services-feature-overlay" />
-
-            <div className="services-feature-number">
-              {active.number}
-            </div>
-
-            <div className="services-feature-label">
+            <div className="svc-feature-tag">
               <span>FEATURED SYSTEM</span>
               <strong>{active.label}</strong>
             </div>
-
           </div>
 
-
-          <div className="services-feature-content">
-
-            <div className="services-feature-top">
-
-              <span>
-                SERVICE / {active.number}
-              </span>
-
-              <b>↗</b>
-
+          {/* ---- CONTENT ---- */}
+          <div className="svc-feature-content" key={active.number}>
+            <div className="svc-feature-index">
+              <span>SERVICE / {active.number}</span>
+              <span className="svc-feature-dash" />
             </div>
 
-            <h3>
-              {active.title}
-            </h3>
+            <h3 className="svc-feature-title">{active.title}</h3>
 
-            <p>
-              {active.short}
-            </p>
+            <p className="svc-feature-short">{active.short}</p>
 
-            <div className="services-feature-line" />
+            <div className="svc-feature-divider" />
 
-            <div className="services-feature-meta">
-
-              <span>
-                SYSTEMS
-              </span>
-
-              <strong>
+            <div className="svc-feature-meta">
+              <span className="svc-feature-meta-label">Systems included</span>
+              <span className="svc-feature-meta-value">
                 {String(active.items.length).padStart(2, "0")}
-              </strong>
-
+              </span>
             </div>
 
+            <a href="#contact" className="svc-feature-link">
+              Request site visit →
+            </a>
           </div>
-
         </div>
 
-
-        {/* =========================================
-            SERVICE LIST
-        ========================================= */}
-
-        <div className="services-list">
-
-          {serviceGroups.map((service, index) => {
-
-            const isActive =
-              index === activeService;
-
-            return (
-              <article
-                className={
-                  isActive
-                    ? "service-row active"
-                    : "service-row"
-                }
-                key={service.number}
-                onMouseEnter={() =>
-                  setActiveService(index)
-                }
-              >
-
-                {/* Number */}
-
-                <div className="service-row-number">
-                  {service.number}
+        {/* ================= ITEM LIST ================= */}
+        <div
+          ref={listRef}
+          className={`svc-list ${listInView ? "svc-list--visible" : ""}`}
+        >
+          {serviceGroups.map((service) => (
+            <article key={service.number} className="svc-item">
+              <header className="svc-item-head">
+                <span className="svc-item-number">{service.number}</span>
+                <div>
+                  <span className="svc-item-label">{service.label}</span>
+                  <h3 className="svc-item-title">{service.title}</h3>
                 </div>
+              </header>
 
-
-                {/* Main title */}
-
-                <div className="service-row-title">
-
-                  <span>
-                    {service.label}
-                  </span>
-
-                  <h3>
-                    {service.title}
-                  </h3>
-
-                </div>
-
-
-                {/* Items */}
-
-                <div className="service-row-items">
-
-                  {service.items.map((item) => (
-                    <span key={item}>
-                      {item}
-                    </span>
-                  ))}
-
-                </div>
-
-
-                {/* Arrow */}
-
-                <div className="service-row-arrow">
-                  ↗
-                </div>
-
-              </article>
-            );
-          })}
-
+              <ul className="svc-item-list">
+                {service.items.map((item) => (
+                  <li key={item}>
+                    <span className="svc-item-tick">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
         </div>
 
-
-        {/* =========================================
-            BOTTOM
-        ========================================= */}
-
-        <div className="services-bottom">
-
-          <div className="services-bottom-left">
-
-            <span className="services-red-line" />
-
-            <span>
-              FROM SUBSTRATE TO FINISH
-            </span>
-
+        {/* ================= BOTTOM CTA ================= */}
+        <div
+          ref={footRef}
+          className={`svc-bottom svc-reveal ${
+            footInView ? "svc-is-visible" : ""
+          }`}
+        >
+          <div className="svc-bottom-left">
+            <span className="svc-red-line" />
+            <strong>FROM SUBSTRATE TO FINISH</strong>
           </div>
 
-          <p>
-            One partner for specialised surface
-            protection requirements.
-          </p>
+          <p>One partner for all your surface protection needs.</p>
 
-          <a
-            href="#contact"
-            className="services-bottom-link"
-          >
-            Discuss your requirement
-            <span>↗</span>
+          <a href="#contact" className="svc-bottom-link">
+            Discuss Your Requirement →
           </a>
-
         </div>
 
       </div>
-
     </section>
   );
 }

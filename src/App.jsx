@@ -10,6 +10,8 @@ import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import Contact from "./components/Contact";
 import About from "./components/About";
+import Testimonials from "./components/Testimonials";
+import WhatsAppFloat from "./components/WhatsAppFloat";
 
 function App() {
   return (
@@ -24,10 +26,13 @@ function App() {
         <Applications />
         <Projects />
         <WhyUs />
+        <Testimonials/>
         <CTA />
         <Contact/>
       </main>
       <Footer />
+
+      <WhatsAppFloat/>
     </>
   );
 }

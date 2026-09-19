@@ -1,5 +1,43 @@
-import { useState } from "react";
+// Projects.jsx
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./Projects.css";
+
+/* =========================================================
+   SCROLL REVEAL HOOK
+========================================================= */
+function useInView(options = {}) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px", ...options }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [options]);
+
+  return [ref, inView];
+}
+
+/* =========================================================
+   DATA
+========================================================= */
 const projects = [
   {
     number: "01",
@@ -183,84 +221,101 @@ const projects = [
   },
 ];
 
+/* Categories derived from data — no orphaned categories */
 const categories = [
   "ALL",
-  "INSTITUTIONAL",
-  "INFRASTRUCTURE",
-  "RESIDENTIAL",
-  "EDUCATION",
-  "COMMERCIAL",
-  "CONSTRUCTION",
+  ...Array.from(new Set(projects.map((p) => p.category))),
 ];
 
+/* =========================================================
+   COMPONENT
+========================================================= */
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("ALL");
-  const [activeProject, setActiveProject] = useState(0);
+  const [activeId, setActiveId] = useState(projects[0].number);
 
-  const filteredProjects =
-    activeCategory === "ALL"
-      ? projects
-      : projects.filter((project) => project.category === activeCategory);
+  const [headRef, headInView]       = useInView();
+  const [filterRef, filterInView]   = useInView();
+  const [featureRef, featureInView] = useInView();
+  const [wallRef, wallInView]       = useInView();
+  const [footRef, footInView]       = useInView();
 
-  const featured =
-    filteredProjects.find(
-      (project) => project.number === projects[activeProject]?.number
-    ) || filteredProjects[0];
+  /* Filtered set — memoised */
+  const filteredProjects = useMemo(() => {
+    if (activeCategory === "ALL") return projects;
+    return projects.filter((p) => p.category === activeCategory);
+  }, [activeCategory]);
+
+  /* Featured derived FROM the filtered set — always in sync */
+  const featured = useMemo(() => {
+    return (
+      filteredProjects.find((p) => p.number === activeId) ||
+      filteredProjects[0]
+    );
+  }, [filteredProjects, activeId]);
+
+  /* When category changes, snap featured to the first item of the new set */
+  const handleCategoryChange = (category) => {
+    setActiveCategory(category);
+    const next =
+      category === "ALL"
+        ? projects[0]
+        : projects.find((p) => p.category === category);
+    if (next) setActiveId(next.number);
+  };
 
   return (
-    <section className="projects-section" id="projects">
-      <div className="projects-bg-grid" />
+    <section className="proj-section" id="projects">
 
-      <div className="projects-container">
+      <div className="proj-container">
 
-        {/* HEADER */}
-        <div className="projects-header">
+        {/* ================= HEADER ================= */}
+        <div
+          ref={headRef}
+          className={`proj-header proj-reveal ${
+            headInView ? "proj-is-visible" : ""
+          }`}
+        >
+          <div className="proj-header-left">
+            <div className="proj-kicker">
+              <span className="proj-kicker-line" />
+              PROJECT EXPERIENCE
+            </div>
 
-          <div className="projects-heading">
-            <span className="section-kicker">PROJECT EXPERIENCE</span>
-
-            <h2>
+            <h2 className="proj-title">
               Work across
               <br />
               <em>real projects.</em>
             </h2>
           </div>
 
-          <div className="projects-header-info">
-
-            <div className="projects-stat">
-              <strong>15+</strong>
-              <span>PROJECT / CLIENT EXPERIENCES</span>
-            </div>
-
+          <div className="proj-header-right">
             <p>
               Experience across institutional, infrastructure, residential,
-              educational, commercial and construction environments.
+              educational, commercial and construction environments —
+              delivered across Puducherry and Chennai.
             </p>
-
           </div>
-
         </div>
 
-        {/* CATEGORY FILTER */}
-        <div className="projects-filter">
-          <div className="projects-filter-label">
-            <span>FILTER PROJECTS</span>
-          </div>
+        {/* ================= FILTER ================= */}
+        <div
+          ref={filterRef}
+          className={`proj-filter proj-reveal ${
+            filterInView ? "proj-is-visible" : ""
+          }`}
+        >
+          <span className="proj-filter-label">Filter</span>
 
-          <div className="projects-filter-buttons">
+          <div className="proj-filter-buttons">
             {categories.map((category) => (
               <button
                 key={category}
-                className={
-                  activeCategory === category
-                    ? "active"
-                    : ""
-                }
-                onClick={() => {
-                  setActiveCategory(category);
-                  setActiveProject(0);
-                }}
+                type="button"
+                className={`proj-filter-btn ${
+                  activeCategory === category ? "is-active" : ""
+                }`}
+                onClick={() => handleCategoryChange(category)}
               >
                 {category}
               </button>
@@ -268,95 +323,98 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* FEATURED PROJECT */}
-        <div className="projects-feature">
+        {/* ================= FEATURED ================= */}
+        {featured && (
+          <div
+            ref={featureRef}
+            className={`proj-feature proj-reveal ${
+              featureInView ? "proj-is-visible" : ""
+            }`}
+          >
+            {/* IMAGE */}
+            <div className="proj-feature-image">
+              <img
+                key={featured.number}
+                src={featured.image}
+                alt={featured.name}
+                loading="lazy"
+              />
 
-          <div className="projects-feature-image">
-
-            <img
-              src={featured.image}
-              alt={featured.name}
-              key={featured.number}
-            />
-
-            <div className="projects-feature-overlay" />
-
-            <div className="projects-feature-number">
-              {featured.number}
-            </div>
-
-            <div className="projects-feature-location">
-              <span>PROJECT LOCATION</span>
-              <strong>{featured.location}</strong>
-            </div>
-
-            <div className="projects-feature-index">
-              {featured.number} / 15
-            </div>
-
-          </div>
-
-          <div className="projects-feature-content">
-
-            <div className="projects-feature-top">
-              <span>{featured.category}</span>
-              <b>↗</b>
-            </div>
-
-            <div className="projects-feature-main">
-
-              <span className="projects-feature-kicker">
-                SELECTED PROJECT
-              </span>
-
-              <h3>
-                {featured.name}
-              </h3>
-
-              <h4>
-                {featured.type}
-              </h4>
-
-              <p>
-                {featured.description}
-              </p>
-
-              <div className="projects-feature-divider" />
-
-              <span className="projects-system-label">
-                APPLICATION SYSTEMS
-              </span>
-
-              <div className="projects-system-list">
-                {featured.systems.map((system, index) => (
-                  <div key={system}>
-                    <span>
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <strong>{system}</strong>
-                  </div>
-                ))}
+              <div className="proj-feature-tag">
+                <span>PROJECT</span>
+                <strong>{featured.number} / 15</strong>
               </div>
 
+              <div className="proj-feature-location">
+                <span>Location</span>
+                <strong>{featured.location}</strong>
+              </div>
             </div>
 
-            <div className="projects-feature-bottom">
+            {/* CONTENT */}
+            <div className="proj-feature-content" key={featured.number}>
+              <div className="proj-feature-top">
+                <span className="proj-feature-category">
+                  {featured.category}
+                </span>
+                <span className="proj-feature-dash" />
+              </div>
 
-              <span>MASTER CHEMICAL SOLUTION</span>
+              <h3 className="proj-feature-name">{featured.name}</h3>
+              <p className="proj-feature-type">{featured.type}</p>
+              <p className="proj-feature-desc">{featured.description}</p>
 
-              <strong>
-                PROJECT EXPERIENCE
-              </strong>
+              {/* ---- FACTS GRID (fills the middle space) ---- */}
+              <div className="proj-facts">
+                <div className="proj-fact">
+                  <span>Type</span>
+                  <strong>{featured.type}</strong>
+                </div>
+                <div className="proj-fact">
+                  <span>Location</span>
+                  <strong>{featured.location}</strong>
+                </div>
+                <div className="proj-fact">
+                  <span>Category</span>
+                  <strong>{featured.category}</strong>
+                </div>
+                <div className="proj-fact">
+                  <span>Scope</span>
+                  <strong>{featured.systems.length} Systems</strong>
+                </div>
+              </div>
 
+              {/* ---- APPLICATION SYSTEMS ---- */}
+              <div className="proj-detail-group">
+                <span className="proj-detail-label">
+                  Application Systems
+                </span>
+
+                <ul className="proj-systems">
+                  {featured.systems.map((system) => (
+                    <li key={system}>
+                      <span className="proj-system-tick">✓</span>
+                      {system}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* ---- CTA pinned to bottom ---- */}
+              <a
+                href="#contact"
+                className="proj-feature-link"
+              >
+                <span>Discuss a Similar Project</span>
+                <span className="proj-feature-link-arrow">→</span>
+              </a>
             </div>
-
           </div>
+        )}
 
-        </div>
-
-        {/* PROJECT WALL */}
-        <div className="projects-wall-header">
-          <div>
+        {/* ================= ARCHIVE HEADER ================= */}
+        <div className="proj-wall-header">
+          <div className="proj-wall-count">
             <span>PROJECT ARCHIVE</span>
             <strong>
               {String(filteredProjects.length).padStart(2, "0")}
@@ -369,85 +427,74 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="projects-wall">
-
-          {filteredProjects.map((project) => {
-
-            const originalIndex = projects.findIndex(
-              (item) => item.number === project.number
-            );
-
-            return (
-              <article
-                className={
-                  featured.number === project.number
-                    ? "project-card active"
-                    : "project-card"
-                }
-                key={project.number}
-                onMouseEnter={() => setActiveProject(originalIndex)}
-                onClick={() => setActiveProject(originalIndex)}
-              >
-
-                <div className="project-card-image">
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                  />
-
-                  <div className="project-card-overlay" />
-                </div>
-
-                <div className="project-card-top">
-
-                  <span>{project.number}</span>
-
-                  <span className="project-card-category">
-                    {project.category}
-                  </span>
-
-                </div>
-
-                <div className="project-card-content">
-
-                  <span>{project.type}</span>
-
-                  <h3>
-                    {project.name}
-                  </h3>
-
-                  <div className="project-card-arrow">
-                    ↗
+        {/* ================= WALL ================= */}
+        <div
+          ref={wallRef}
+          className={`proj-wall ${wallInView ? "proj-wall--visible" : ""}`}
+        >
+          {filteredProjects.length === 0 ? (
+            <div className="proj-empty">
+              No projects listed in this category yet.
+            </div>
+          ) : (
+            filteredProjects.map((project, i) => {
+              const isActive = featured?.number === project.number;
+              return (
+                <article
+                  key={project.number}
+                  className={`proj-card ${isActive ? "is-active" : ""}`}
+                  onMouseEnter={() => setActiveId(project.number)}
+                  onClick={() => setActiveId(project.number)}
+                  style={{ transitionDelay: `${i * 40}ms` }}
+                >
+                  <div className="proj-card-image">
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      loading="lazy"
+                    />
+                    <span className="proj-card-number">
+                      {project.number}
+                    </span>
                   </div>
 
-                </div>
+                  <div className="proj-card-body">
+                    <span className="proj-card-category">
+                      {project.category}
+                    </span>
 
-              </article>
-            );
-          })}
+                    <h4 className="proj-card-name">{project.name}</h4>
 
+                    <span className="proj-card-location">
+                      {project.type} · {project.location}
+                    </span>
+                  </div>
+                </article>
+              );
+            })
+          )}
         </div>
 
-        {/* BOTTOM STRIP */}
-        <div className="projects-bottom">
-
-          <div className="projects-bottom-left">
-            <span />
-            <strong>
-              SELECTED PROJECT / CLIENT EXPERIENCE
-            </strong>
+        {/* ================= BOTTOM CTA ================= */}
+        <div
+          ref={footRef}
+          className={`proj-bottom proj-reveal ${
+            footInView ? "proj-is-visible" : ""
+          }`}
+        >
+          <div className="proj-bottom-left">
+            <span className="proj-red-line" />
+            <strong>SELECTED PROJECT / CLIENT EXPERIENCE</strong>
           </div>
 
           <p>
-            Every project brings a different surface, environment
-            and performance requirement.
+            Every project brings a different surface, environment and
+            performance requirement.
           </p>
 
-          <a href="#contact">
-            Discuss Your Project
-            <span>↗</span>
+          <a href="#contact" className="proj-bottom-link">
+            Discuss Your Project →
           </a>
-
         </div>
 
       </div>
