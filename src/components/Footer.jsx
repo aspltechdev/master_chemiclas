@@ -600,9 +600,9 @@ export default function Footer() {
               rel="noreferrer"
               className="ft-credit-link"
             >
-              Digi Pondy
+              Digi Pondy Technologies
             </a>
-            {" "}· Bangalore
+            {" "}
           </div>
 
         </div>
