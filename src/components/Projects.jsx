@@ -2,6 +2,22 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import "./Projects.css";
 
+import jipmer from "../assets/jipmer.jpg";
+import watertank from "../assets/watertank.jpg";
+import casagrand from "../assets/casagrand.jpg";
+import spring from "../assets/spring.jpg";
+import primrose from "../assets/primrose.jpg";
+import shanmuga from "../assets/shanmuga.png";
+import exotic from "../assets/exotic.png";
+import pragati from "../assets/pragati.png";
+import ocean from "../assets/ocean.png";
+import ganesan from "../assets/ganesan.png";
+import subramanian from "../assets/subramanian.png";
+import jeno from "../assets/jeno.png";
+import bon from "../assets/bon.png";
+import auro from "../assets/auro.png";
+import oviod from "../assets/oviod.jpg";
+
 /* =========================================================
    SCROLL REVEAL HOOK
 ========================================================= */
@@ -48,7 +64,7 @@ const projects = [
     description:
       "Project experience involving specialised construction surface and protection requirements within an institutional environment.",
     image:
-      "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1800&q=85",
+      jipmer,
     systems: ["Waterproofing", "Surface Protection"],
   },
   {
@@ -60,7 +76,7 @@ const projects = [
     description:
       "Water-retaining infrastructure application requiring durable protection and waterproofing systems.",
     image:
-      "https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=1800&q=85",
+      watertank,
     systems: ["Waterproofing", "Protection"],
   },
   {
@@ -72,7 +88,7 @@ const projects = [
     description:
       "Construction project experience across residential surfaces and building protection applications.",
     image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85",
+      casagrand,
     systems: ["Waterproofing", "Flooring"],
   },
   {
@@ -84,7 +100,7 @@ const projects = [
     description:
       "Surface and flooring applications for an educational environment with varied functional requirements.",
     image:
-      "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1800&q=85",
+      spring,
     systems: ["Flooring", "Surface Treatment"],
   },
   {
@@ -96,7 +112,7 @@ const projects = [
     description:
       "Specialised construction surface solutions applied across educational infrastructure.",
     image:
-      "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1800&q=85",
+      primrose,
     systems: ["Flooring", "Protection"],
   },
   {
@@ -108,7 +124,7 @@ const projects = [
     description:
       "Commercial environment requiring practical, durable and high-traffic surface solutions.",
     image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=85",
+      shanmuga,
     systems: ["Flooring", "Surface Protection"],
   },
   {
@@ -120,7 +136,7 @@ const projects = [
     description:
       "Construction project experience involving specialised building surface applications.",
     image:
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=85",
+      exotic,
     systems: ["Waterproofing", "Repair"],
   },
   {
@@ -132,7 +148,7 @@ const projects = [
     description:
       "Construction-focused project experience across protection and surface treatment requirements.",
     image:
-      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1800&q=85",
+      pragati,
     systems: ["Concrete Repair", "Protection"],
   },
   {
@@ -144,7 +160,7 @@ const projects = [
     description:
       "Interior and construction application experience involving finished surface requirements.",
     image:
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85",
+      ocean,
     systems: ["Flooring", "Surface Finish"],
   },
   {
@@ -156,7 +172,7 @@ const projects = [
     description:
       "Construction project experience supporting specialised surface and building protection requirements.",
     image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=85",
+      ganesan,
     systems: ["Waterproofing", "Repair"],
   },
   {
@@ -168,7 +184,7 @@ const projects = [
     description:
       "Project experience across construction applications requiring specialised surface systems.",
     image:
-      "https://images.unsplash.com/photo-1590725175176-c3b0b7b7b7e5?auto=format&fit=crop&w=1800&q=85",
+      subramanian,
     systems: ["Waterproofing", "Flooring"],
   },
   {
@@ -180,7 +196,7 @@ const projects = [
     description:
       "Building project experience involving waterproofing and specialised construction surface requirements.",
     image:
-      "https://images.unsplash.com/photo-1562259949-e8e768e4a2e0?auto=format&fit=crop&w=1800&q=85",
+      jeno,
     systems: ["Waterproofing", "Protection"],
   },
   {
@@ -192,7 +208,7 @@ const projects = [
     description:
       "Construction application experience focused on practical surface and protection requirements.",
     image:
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1800&q=85",
+      bon,
     systems: ["Flooring", "Protection"],
   },
   {
@@ -204,7 +220,7 @@ const projects = [
     description:
       "Project experience involving specialised construction surface and finishing applications.",
     image:
-      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1800&q=85",
+      auro,
     systems: ["Surface Treatment", "Protection"],
   },
   {
@@ -216,7 +232,7 @@ const projects = [
     description:
       "Commercial project experience involving durable surface and protection systems.",
     image:
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=85",
+      oviod,
     systems: ["Flooring", "Protection"],
   },
 ];

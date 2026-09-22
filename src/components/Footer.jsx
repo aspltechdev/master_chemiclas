@@ -586,12 +586,21 @@ export default function Footer() {
           <div className="ft-credit">
             Crafted by{" "}
             <a
-              href="https://aspltech.com"
+              href="https://aspltech.in"
               target="_blank"
               rel="noreferrer"
               className="ft-credit-link"
             >
               ASPL Tech Solutions Pvt Ltd
+            </a>
+            {" / "}
+            <a
+              href="https://digipondy.in"
+              target="_blank"
+              rel="noreferrer"
+              className="ft-credit-link"
+            >
+              Digi Pondy
             </a>
             {" "}· Bangalore
           </div>

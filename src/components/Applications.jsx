@@ -252,6 +252,12 @@
 import { useEffect, useRef, useState } from "react";
 import "./Applications.css";
 
+import wetarea from "../assets/wetarea.png";
+import terrace from "../assets/terrace.png";
+import podium from "../assets/podium.png";
+import liftpit from "../assets/liftpit.png";
+import industrial from "../assets/industrial.png";
+import sports from "../assets/sports.png";
 /* =========================================================
    SCROLL REVEAL HOOK
 ========================================================= */
@@ -296,7 +302,7 @@ const applications = [
     description:
       "Waterproofing systems for toilets, bathrooms and other moisture-prone areas.",
     image:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=85",
+      wetarea,
     tags: ["Toilet", "Bathroom", "Wet Area"],
   },
   {
@@ -306,7 +312,7 @@ const applications = [
     description:
       "Protection systems designed for exposed terraces, roofs and weather-facing surfaces.",
     image:
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85",
+      terrace,
     tags: ["Terrace", "Roof", "Tile Coating"],
   },
   {
@@ -316,7 +322,7 @@ const applications = [
     description:
       "Below-ground and podium waterproofing systems for critical structural protection.",
     image:
-      "https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1600&q=85",
+      podium,
     tags: ["Podium", "Basement", "Foundation"],
   },
   {
@@ -326,7 +332,7 @@ const applications = [
     description:
       "Specialised waterproofing solutions for lift pits, sumps and water-retaining structures.",
     image:
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1600&q=85",
+      liftpit,
     tags: ["Lift Pit", "Sump", "Tank"],
   },
   {
@@ -336,7 +342,7 @@ const applications = [
     description:
       "High-performance flooring systems for industrial, commercial and high-traffic environments.",
     image:
-      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1600&q=85",
+      industrial,
     tags: ["Epoxy", "PU", "Self Level"],
   },
   {
@@ -346,7 +352,7 @@ const applications = [
     description:
       "Specialised sports flooring systems designed around performance and surface requirements.",
     image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=85",
+      sports,
     tags: ["Sports", "Performance", "Flooring"],
   },
 ];

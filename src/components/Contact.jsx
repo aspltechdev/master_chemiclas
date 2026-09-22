@@ -492,14 +492,12 @@
 //   );
 // }
 
-// Contact.jsx
+// src/components/Contact.jsx
 import { useEffect, useRef, useState } from "react";
 import "./Contact.css";
 
-/* =========================================================
-   SCROLL REVEAL HOOK
-========================================================= */
-function useInView(options = {}) {
+/* SCROLL REVEAL */
+function useInView() {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
 
@@ -507,7 +505,10 @@ function useInView(options = {}) {
     const node = ref.current;
     if (!node) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !("IntersectionObserver" in window)
+    ) {
       setInView(true);
       return;
     }
@@ -516,24 +517,26 @@ function useInView(options = {}) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          observer.unobserve(entry.target);
+          observer.unobserve(node);
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px", ...options }
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -60px 0px",
+      }
     );
 
     observer.observe(node);
+
     return () => observer.disconnect();
-  }, [options]);
+  }, []);
 
   return [ref, inView];
 }
 
-/* =========================================================
-   CONFIG
-========================================================= */
+/* CONFIG */
 const W3FORMS_ACCESS_KEY =
-  import.meta.env.VITE_W3FORMS_ACCESS_KEY || "YOUR_W3FORMS_ACCESS_KEY";
+  import.meta.env.VITE_W3FORMS_ACCESS_KEY?.trim() || "";
 
 const serviceOptions = [
   "Waterproofing",
@@ -546,11 +549,10 @@ const serviceOptions = [
   "Other Requirement",
 ];
 
-/* =========================================================
-   COMPONENT
-========================================================= */
 export default function Contact() {
   const [status, setStatus] = useState("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const submittingRef = useRef(false);
 
   const [headRef, headInView] = useInView();
   const [infoRef, infoInView] = useInView();
@@ -558,40 +560,93 @@ export default function Contact() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (status === "sending") return;
 
-    setStatus("sending");
+    if (submittingRef.current) return;
 
     const form = event.currentTarget;
     const formData = new FormData(form);
 
+    setErrorMessage("");
+
+    // Ignore automated submissions that fill this hidden field.
+    if (String(formData.get("company_website") || "").trim()) {
+      return;
+    }
+
+    if (
+      !W3FORMS_ACCESS_KEY ||
+      W3FORMS_ACCESS_KEY === "YOUR_W3FORMS_ACCESS_KEY"
+    ) {
+      console.error(
+        "Missing VITE_W3FORMS_ACCESS_KEY. Add it to .env and restart Vite."
+      );
+      setErrorMessage(
+        "The enquiry form is temporarily unavailable. Please contact us directly."
+      );
+      setStatus("error");
+      return;
+    }
+
+    // Trim text fields before submitting.
+    for (const [key, value] of formData.entries()) {
+      if (typeof value === "string") {
+        formData.set(key, value.trim());
+      }
+    }
+
+    const requiredFields = ["name", "email", "phone", "service", "message"];
+
+    if (requiredFields.some((field) => !formData.get(field))) {
+      setErrorMessage("Please complete all required fields.");
+      setStatus("error");
+      return;
+    }
+
+    formData.delete("company_website");
+    formData.set("access_key", W3FORMS_ACCESS_KEY);
+
+    submittingRef.current = true;
+    setStatus("sending");
+
     try {
-      const response = await fetch("https://api.w3forms.com/submit", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { Accept: "application/json" },
+        headers: {
+          Accept: "application/json",
+        },
         body: formData,
       });
 
       const data = await response.json();
 
       if (!response.ok || !data.success) {
-        throw new Error(data?.message || data?.error || "Something went wrong.");
+        throw new Error(
+          data.message || "Your enquiry could not be submitted. Please try again."
+        );
       }
 
       form.reset();
       setStatus("success");
     } catch (error) {
-      console.error("W3Forms Error:", error);
+      console.error("Web3Forms submission error:", error);
+
+      setErrorMessage(
+        error instanceof TypeError
+          ? "Unable to connect. Please check your internet connection and try again."
+          : error.message ||
+              "We couldn't submit your enquiry. Please try again or contact us directly."
+      );
+
       setStatus("error");
+    } finally {
+      submittingRef.current = false;
     }
   };
 
   return (
     <section className="cform-section" id="contact-form">
-
       <div className="cform-container">
-
-        {/* ================= HEADER ================= */}
+        {/* HEADER */}
         <div
           ref={headRef}
           className={`cform-header cform-reveal ${
@@ -613,17 +668,16 @@ export default function Contact() {
 
           <div className="cform-header-right">
             <p>
-              Tell us about your surface, site condition and project
-              requirement. Our team will help identify the appropriate
-              waterproofing, flooring, repair or protection system.
+              Tell us about your surface, site condition and project requirement.
+              Our team will help identify the appropriate waterproofing, flooring,
+              repair or protection system.
             </p>
           </div>
         </div>
 
-        {/* ================= MAIN GRID ================= */}
+        {/* MAIN GRID */}
         <div className="cform-main">
-
-          {/* ---- LEFT: INFO ---- */}
+          {/* LEFT: INFORMATION */}
           <aside
             ref={infoRef}
             className={`cform-info cform-reveal-left ${
@@ -640,13 +694,12 @@ export default function Contact() {
               </h3>
 
               <p className="cform-info-text">
-                Share your requirement with us and our team will understand
-                the application before recommending a suitable construction
-                chemical system.
+                Share your requirement with us and our team will understand the
+                application before recommending a suitable construction chemical
+                system.
               </p>
             </div>
 
-            {/* Contact details */}
             <div className="cform-details">
               <div className="cform-detail">
                 <span className="cform-detail-label">Call Our Team</span>
@@ -682,18 +735,19 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Services */}
             <div className="cform-services">
               <div className="cform-services-head">
                 <span>What We Cover</span>
-                <strong>{String(serviceOptions.length).padStart(2, "0")}</strong>
+                <strong>
+                  {String(serviceOptions.length).padStart(2, "0")}
+                </strong>
               </div>
 
               <ul className="cform-services-list">
-                {serviceOptions.map((service, i) => (
+                {serviceOptions.map((service, index) => (
                   <li key={service}>
                     <span className="cform-service-number">
-                      {String(i + 1).padStart(2, "0")}
+                      {String(index + 1).padStart(2, "0")}
                     </span>
                     {service}
                   </li>
@@ -702,7 +756,7 @@ export default function Contact() {
             </div>
           </aside>
 
-          {/* ---- RIGHT: FORM ---- */}
+          {/* RIGHT: FORM */}
           <div
             ref={formRef}
             className={`cform-form-wrap cform-reveal-right ${
@@ -710,12 +764,10 @@ export default function Contact() {
             }`}
           >
             {status === "success" ? (
-              <div className="cform-success">
+              <div className="cform-success" role="status" aria-live="polite">
                 <div className="cform-success-icon">✓</div>
 
-                <span className="cform-success-kicker">
-                  MESSAGE RECEIVED
-                </span>
+                <span className="cform-success-kicker">MESSAGE RECEIVED</span>
 
                 <h3 className="cform-success-title">
                   Thank you for
@@ -724,46 +776,55 @@ export default function Contact() {
                 </h3>
 
                 <p className="cform-success-text">
-                  Your project enquiry has been submitted successfully. Our
-                  team will get in touch with you shortly.
+                  Your project enquiry has been submitted successfully. Our team
+                  will get in touch with you shortly.
                 </p>
 
                 <button
                   type="button"
                   className="cform-success-btn"
-                  onClick={() => setStatus("idle")}
+                  onClick={() => {
+                    setErrorMessage("");
+                    setStatus("idle");
+                  }}
                 >
                   Submit Another Enquiry →
                 </button>
               </div>
             ) : (
-              <form className="cform-form" onSubmit={handleSubmit}>
-
-                {/* W3Forms hidden inputs */}
+              <form
+                className="cform-form"
+                onSubmit={handleSubmit}
+                aria-busy={status === "sending"}
+              >
+                {/* WEB3FORMS SETTINGS */}
                 <input
                   type="hidden"
                   name="access_key"
                   value={W3FORMS_ACCESS_KEY}
                 />
+
                 <input
                   type="hidden"
                   name="subject"
                   value="New Project Enquiry — Master Chemical Solution"
                 />
+
                 <input
                   type="hidden"
                   name="from_name"
                   value="Master Chemical Solution Website"
                 />
 
-                {/* Honeypot */}
+                {/* HONEYPOT */}
                 <input
                   type="text"
                   name="company_website"
-                  tabIndex="-1"
+                  tabIndex={-1}
                   autoComplete="off"
                   className="cform-honeypot"
                   aria-hidden="true"
+                  style={{ display: "none" }}
                 />
 
                 <div className="cform-form-head">
@@ -875,7 +936,7 @@ export default function Contact() {
                     id="cform-message"
                     name="message"
                     placeholder="Tell us about your project, surface condition, area or requirement..."
-                    rows="5"
+                    rows={5}
                     required
                   />
                 </div>
@@ -883,8 +944,8 @@ export default function Contact() {
                 {/* FOOTER */}
                 <div className="cform-form-footer">
                   <p className="cform-privacy">
-                    By submitting, you agree to be contacted about your
-                    project enquiry.
+                    By submitting, you agree to be contacted about your project
+                    enquiry.
                   </p>
 
                   <button
@@ -895,7 +956,7 @@ export default function Contact() {
                     {status === "sending" ? (
                       <>
                         <span>Sending...</span>
-                        <i className="cform-loader" />
+                        <i className="cform-loader" aria-hidden="true" />
                       </>
                     ) : (
                       <span>Send Project Enquiry →</span>
@@ -904,18 +965,16 @@ export default function Contact() {
                 </div>
 
                 {status === "error" && (
-                  <div className="cform-error">
-                    We couldn't submit your enquiry right now. Please try
-                    again or contact us directly.
+                  <div className="cform-error" role="alert">
+                    {errorMessage}
                   </div>
                 )}
               </form>
             )}
           </div>
-
         </div>
 
-        {/* ================= BOTTOM STRIP ================= */}
+        {/* BOTTOM STRIP */}
         <div className="cform-bottom">
           <div className="cform-bottom-left">
             <span className="cform-red-line" />
@@ -924,7 +983,6 @@ export default function Contact() {
 
           <p>Waterproofing · Flooring · Repair · Protection</p>
         </div>
-
       </div>
     </section>
   );
